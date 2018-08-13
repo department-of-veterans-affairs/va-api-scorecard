@@ -1,20 +1,18 @@
-- id: XYJ123
-  name: Product One
-  description: This is the description for product one.
-  price: '19.99'
-- id: XYJ234
-  name: Product Two
-  description: This is the description for product two.
-  price: '19.99'
-- id: XYJ456
-  name: Product Three
-  description: This is the description for product three.
-  price: '19.99'
-- id: XYJ789
-  name: Product Four
-  description: This is the description for product four.
-  price: '19.99'
-- id: XYH123
-  name: Product Five
-  description: This is the description for product five.
-  price: '19.96'
+- name: Sample API
+  description: This is a sample of api 1
+  status: green
+- name: VA API 
+  description: This is the VA API
+  status: yellow
+- name: Program API
+  description: This is the program api
+  status: red
+- name: Sample API 2
+  description: This is a sample of api 1
+  status: red
+- name: VA API 2
+  description: This is the VA API
+  status: green
+- name: Program API 2
+  description: This is the program api
+  status: yellow
