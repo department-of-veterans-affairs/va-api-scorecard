@@ -1,2 +1,2 @@
 # va-api-scorecard
-A site for tracking the status of VA's api development.
+A site for tracking the status of VA's API development.
