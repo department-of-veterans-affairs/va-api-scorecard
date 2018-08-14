@@ -4,7 +4,7 @@
     augue. Duis ipsum ex, scelerisque quis semper nec, sollicitudin et tortor.
     Donec ac lobortis mauris, a malesuada metus. In hac habitasse platea
     dictumst. Mauris ac sodales nibh. Sed a gravida leo, et placerat metus.
-  status: Yellow
+  status: Green
 - name: VA API
   description: This is the VA API
   status: yellow
