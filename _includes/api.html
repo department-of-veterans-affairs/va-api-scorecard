@@ -4,7 +4,7 @@
 <h4>
   Status: {{api.status}}
 </h4>
-<div class='status-{{api.status}}'>
+<div class='status-{{api.status | downcase }}'>
   {{api.status}}
 </div>
 <p>
