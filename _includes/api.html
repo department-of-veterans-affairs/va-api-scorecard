@@ -1,9 +1,12 @@
 <h3>
   {{api.name}}
 </h3>
-<strong>
-    {{api.status}}
-</strong>
+<h4>
+  Status: {{api.status}}
+</h4>
+<div class='status-{{api.status}}'>
+  {{api.status}}
+</div>
 <p>
   {{ api.description }}
 </p>
