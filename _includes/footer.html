@@ -1,35 +1,13 @@
-<footer class="site-footer h-card">
-  <data class="u-url" href="{{ "/" | relative_url }}"></data>
-
-  <div class="wrapper">
-
-    <h2 class="footer-heading">{{ site.title | escape }}</h2>
-
-    <div class="footer-col-wrapper">
-      <div class="footer-col footer-col-1">
-        <ul class="contact-list">
-          <li class="p-name">
-            {%- if site.author -%}
-              {{ site.author | escape }}
-            {%- else -%}
-              {{ site.title | escape }}
-            {%- endif -%}
-            </li>
-            {%- if site.email -%}
-            <li><a class="u-email" href="mailto:{{ site.email }}">{{ site.email }}</a></li>
-            {%- endif -%}
-        </ul>
-      </div>
-
-      <div class="footer-col footer-col-2">
-        {%- include social.html -%}
-      </div>
-
-      <div class="footer-col footer-col-3">
-        <p>{{- site.description | escape -}}</p>
-      </div>
+<footer class="usa-footer usa-footer-medium" role="contentinfo">
+    <div class="usa-grid">
+        <div class="usa-footer-logo usa-width-one-third"><a href="https://www.va.gov"><img src="/static/media/lighthouseVaLogo.1dc26d71.png" alt="Department of Veterans Affairs"></a></div>
+        <div class="usa-footer-links usa-width-two-thirds">
+            <ul class="usa-unstyled-list">
+                <li><a href="https://github.com/department-of-veterans-affairs/VA-Micropurchase-Repo">Micro-consulting</a></li>
+                <li><a href="https://www.section508.va.gov/">Accessibility</a></li>
+                <li><a href="https://www.va.gov/webpolicylinks.asp">Web Policies</a></li>
+                <li><a href="https://www.va.gov/privacy/">Privacy</a></li>
+            </ul>
+        </div>
     </div>
-
-  </div>
-
 </footer>
