@@ -13,6 +13,7 @@ $z-index-nav:     9000;
 .usa-header {
   width: 100%;
   z-index: $z-index-header;
+  background-color: #1B2B3E;
 
   @include media($nav-width) {
     border-bottom: 1px solid $color-gray-lighter;
@@ -41,7 +42,7 @@ $z-index-nav:     9000;
   }
 
   a {
-    color: $color-base;
+    color: $color-white;
     text-decoration: none;
   }
 
@@ -125,8 +126,12 @@ $z-index-nav:     9000;
   .usa-navbar {
     @include media($nav-width) {
       position: relative;
-      width: 18%; // TODO: review this more
+      width: 30%; // TODO: review this more
     }
+  }
+  .usa-nav {
+    background-color: #1B2B3E;
+    color: #ffffff;
   }
 }
 
@@ -194,6 +199,7 @@ $z-index-nav:     9000;
   }
 
   .usa-nav-link {
+    color: $color-white;
     @include media($nav-width) {
       @include padding(1.8rem null);
     }

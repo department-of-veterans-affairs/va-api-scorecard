@@ -40,6 +40,7 @@
       }
     }
   }
+  color: $color-white;
 }
 
 .usa-nav-container {
@@ -149,7 +150,7 @@
     > a {
       @include media($nav-width) {
         @include padding(1.3rem 1.5rem 2.2rem 1.5rem);
-        color: $color-gray;
+        color: $color-white;
         font-size: $h5-font-size;
         font-weight: $font-bold;
         line-height: 1;

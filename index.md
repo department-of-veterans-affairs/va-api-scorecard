@@ -6,9 +6,10 @@ layout: documentation
 ---
 ## VA API Scorecard
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a viverra augue. Duis ipsum ex, scelerisque quis semper nec, sollicitudin et tortor. Donec ac lobortis mauris, a malesuada metus. In hac habitasse platea dictumst. Mauris ac sodales nibh. Sed a gravida leo, et placerat metus. Quisque sed scelerisque turpis. Vivamus id imperdiet ipsum.
+### Statuses, Updates, and blockers on VA APIs
 
-### API's
+<hr>
+
 {% for api in site.data.store %}
   {% include api.html api=api %}
 {% endfor %}
