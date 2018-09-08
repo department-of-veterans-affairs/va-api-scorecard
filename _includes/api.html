@@ -1,13 +1,43 @@
 <h3>
-  {{api.name}}
+  {{api_data.name}}
 </h3>
 <h4>
-  Status: {{api.status}}
+  Status: {{api_data.status}}
 </h4>
-<div class='status-{{api.status | downcase }}'>
-  {{api.status}}
+<p>
+  <div>
+    <a href='{{api_data.homepage}}'>Homepage</a> | 
+    <a href="{{api_data.github}}">Github</a>  
+  </div>
+</p>
+<div class='status-{{api_data.status | downcase }}'>
+  {{api_data.status}}
 </div>
 <p>
-  {{ api.description }}
+  {{ api_data.description }}
 </p>
+<h4>
+  {{ api_data.stage }}
+</h4>
+<h5>
+  {% assign step_count = api_data.success_criteria | where:"completed", true | size %}
+
+  {{step_count}}/{{api_data.success_criteria | size}} Delivery success criteria satisfied
+</h5>
+<ul>
+  {% for step in api_data.success_criteria %}
+    <li>
+      {% if step.completed %}
+        <input type="checkbox" checked name="">
+      {% else %}
+        <input type="checkbox" name="">
+      {% endif %}
+      <label>{{step.criteria}}</label>
+    </li>
+  {% endfor %}
+</ul>
+<div>
+  {{ api_data.metrics | markdownify }}
+</div>
+  
 <hr>

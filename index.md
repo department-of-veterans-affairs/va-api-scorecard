@@ -9,7 +9,7 @@ layout: documentation
 ### Statuses, Updates, and blockers on VA APIs
 
 <hr>
-
-{% for api in site.data.store %}
-  {% include api.html api=api %}
+{% for api_hash in site.data.apis %}
+  {% assign api_data = api_hash[1] %}
+  {% include api.html api_data=api_hash %}
 {% endfor %}

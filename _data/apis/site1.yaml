@@ -1,0 +1,26 @@
+name: Sample API
+description: >-
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a viverra
+  augue. Duis ipsum ex, scelerisque quis semper nec, sollicitudin et tortor.
+  Donec ac lobortis mauris, a malesuada metus. In hac habitasse platea
+  dictumst. Mauris ac sodales nibh. Sed a gravida leo, et placerat metus.
+status: Green
+homepage: www.google.com
+github: www.github.com
+stage: Operations Stage
+success_criteria:
+  - completed: true
+    criteria: Lorem ipsum dolor sit amet.
+  - completed: true
+    criteria: Lorem ipsum dolor sit amet.
+  - completed: false
+    criteria: Lorem ipsum dolor sit amet.
+  - completed: true
+    criteria: Lorem ipsum dolor sit amet.
+metrics: >-
+  #### Funnel metrics
+  
+  | Metric                      | Current | Target |
+  |-----------------------------|---------|--------|
+  | Total API Key Registrations | 75      | 100    |
+  | Total API Calls in Sandbox  | 1075    | 2000   |
