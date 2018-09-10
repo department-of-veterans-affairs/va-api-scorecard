@@ -1,18 +1,15 @@
+{% assign status = site.data.statuses | where:'text', api_data.status | first %}
 <h3>
+  <img src="{{status.image | relative_url}}" alt="{{status.alt}}" title="{{status.alt}}" width='25px' align='top'>
   {{api_data.name}}
 </h3>
-<h4>
-  Status: {{api_data.status}}
-</h4>
 <p>
   <div>
     <a href='{{api_data.homepage}}'>Homepage</a> | 
     <a href="{{api_data.github}}">Github</a>  
   </div>
 </p>
-<div class='status-{{api_data.status | downcase }}'>
-  {{api_data.status}}
-</div>
+
 <p>
   {{ api_data.description }}
 </p>

@@ -1,10 +1,10 @@
-name: Sample API
+name: Veteran Verification
 description: >-
   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a viverra
   augue. Duis ipsum ex, scelerisque quis semper nec, sollicitudin et tortor.
   Donec ac lobortis mauris, a malesuada metus. In hac habitasse platea
   dictumst. Mauris ac sodales nibh. Sed a gravida leo, et placerat metus.
-status: Green
+status: Grey
 homepage: www.google.com
 github: www.github.com
 stage: Iterate

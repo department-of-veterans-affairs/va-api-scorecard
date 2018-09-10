@@ -55,3 +55,31 @@
         {% endfor %}
   </tbody>
 </table>
+<table class='legend-table'>
+  <thead>
+    <tr>
+      <th colspan="2" scope="col">
+        Legend
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for status in site.data.statuses %}
+      {% assign mod = forloop.index | modulo: 2 %}
+      {% if mod == 1 %}
+        <tr>
+      {% endif %}
+      <td>
+        <div style='float:left' class='mr1'>
+          <img src="{{status.image | relative_url}}" alt="{{status.alt}}" title="{{status.alt}}" width='25px' align='top'>
+        </div>
+        <div>
+          {{ status.alt }}
+        </div>
+      </td>
+      {% if mod == 0 %}
+        </tr>
+      {% endif %}
+    {% endfor %}
+  </tbody>
+</table>

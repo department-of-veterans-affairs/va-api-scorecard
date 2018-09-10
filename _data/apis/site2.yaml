@@ -1,9 +1,9 @@
 name: VA API
 description: This is the VA API
-status: Yellow
+status: Green
 homepage: www.google.com
 github: www.github.com
-stage: Iterate
+stage: Prototype
 success_criteria:
   - completed: false
     criteria: Lorem ipsum dolor sit amet.
