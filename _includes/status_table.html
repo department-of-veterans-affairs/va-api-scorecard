@@ -1,0 +1,34 @@
+
+<table>
+  <thead>
+    <tr>
+      {% for stage in site.data.stages %}
+        <th>
+          {{ stage.name }}
+        </th>
+      {% endfor %}
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      {% for stage in site.data.stages %}
+        <td>
+          <ul>
+            {% for api_hash in site.data.apis %}
+              
+              {% assign api_data = api_hash[1] %}
+              {% assign status = site.data.statuses | where:'text', api_data.status | first %}
+              {% if api_data.stage == stage.name %}
+                <li>
+                  <img src="{{status.image | relative_url}}" alt="{{status.alt}}" width='25px'>
+                  {{ api_data.name }}
+                </li>
+              {% endif %}
+
+            {% endfor %}
+          </ul>
+        </td>
+      {% endfor %}
+    </tr>
+  </tbody>
+</table>

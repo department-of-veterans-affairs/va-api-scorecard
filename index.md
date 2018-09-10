@@ -8,7 +8,8 @@ layout: documentation
 
 ### Statuses, Updates, and blockers on VA APIs
 
-<hr>
+{% include status_table.html %}
+
 {% for api_hash in site.data.apis %}
   {% assign api_data = api_hash[1] %}
   {% include api.html api_data=api_hash %}
