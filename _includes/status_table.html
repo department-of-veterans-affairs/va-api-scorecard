@@ -1,34 +1,57 @@
+{% comment %}Figure out the number of table rows needed{% endcomment %}
+{% assign row_num = 0 %}
+{% for stage in site.data.stages %}
+  {% assign cur_count = 0 %}
+  {% for api_hash in site.data.apis %}
+    {% assign api_data = api_hash[1] %}
+    {% if api_data.stage == stage.name %}
+      {%assign cur_count = cur_count | plus: 1 %}
+    {% endif %}
+  {% endfor %}
+  {% if cur_count > row_num %}
+    {% assign row_num = cur_count %}
+  {% endif %}
+{% endfor %}
+{% assign row_num = row_num | minus: 1 %}
 
-<table>
+
+
+<table style='width: 100%'>
   <thead>
     <tr>
       {% for stage in site.data.stages %}
-        <th>
+        <th scope='col'>
           {{ stage.name }}
         </th>
       {% endfor %}
     </tr>
   </thead>
-  <tbody>
-    <tr>
-      {% for stage in site.data.stages %}
-        <td>
-          <ul>
-            {% for api_hash in site.data.apis %}
-              
-              {% assign api_data = api_hash[1] %}
-              {% assign status = site.data.statuses | where:'text', api_data.status | first %}
-              {% if api_data.stage == stage.name %}
-                <li>
-                  <img src="{{status.image | relative_url}}" alt="{{status.alt}}" width='25px'>
-                  {{ api_data.name }}
-                </li>
-              {% endif %}
+  <tbody class='' style='border: none !important'>
+        {% assign displayed = '' %}
+        {% for i in (0..row_num) %}
+          <tr style='border: none !important'>
+            {% for stage in site.data.stages %}
+              <td style='border: none !important'>
+                {% for api_hash in site.data.apis %}
+                
+                {% assign api_data = api_hash[1] %}
+                {% assign status = site.data.statuses | where:'text', api_data.status | first %}
+                {% if api_data.stage == stage.name %}
+                  {% if displayed contains api_data %}
+                  {% else %}
+                    {% assign displayed = displayed | prepend: api_data %}
+                    <span>
+                      <img src="{{status.image | relative_url}}" alt="{{status.alt}}" title="{{status.alt}}" width='25px' align='top'>
+                    </span>
+                    <span>{{ api_data.name }}</span>
+                    {% break %}                
+                  {% endif %}
+                {% endif %}
 
+              {% endfor %}
+              </td>
             {% endfor %}
-          </ul>
-        </td>
-      {% endfor %}
-    </tr>
+          </tr> 
+        {% endfor %}
   </tbody>
 </table>
