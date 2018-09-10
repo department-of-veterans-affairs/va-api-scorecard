@@ -43,7 +43,9 @@
                     <span>
                       <img src="{{status.image | relative_url}}" alt="{{status.alt}}" title="{{status.alt}}" width='25px' align='top'>
                     </span>
-                    <span>{{ api_data.name }}</span>
+                    <span>
+                      <a href="#api-{{api_data.name | replace: ' ', '' | downcase }}" class='no-link-style'>{{ api_data.name }}</a>
+                    </span>
                     {% break %}                
                   {% endif %}
                 {% endif %}

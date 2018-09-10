@@ -1,0 +1,16 @@
+<h2>API Stages</h2>
+
+{% for stage in site.data.stages %}
+  <h3>{{ stage.name }}</h3>
+  <p>
+    Delivery success criteria
+    <ul>
+      {% for step in stage.steps %}
+        <li>
+          {{step}}
+        </li>
+      {% endfor %}
+    </ul>
+    <a href="#main-content">Return to scorecard</a>
+  </p>
+{% endfor %}

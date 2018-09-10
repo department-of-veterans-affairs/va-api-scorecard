@@ -14,3 +14,5 @@ layout: documentation
   {% assign api_data = api_hash[1] %}
   {% include api.html api_data=api_hash %}
 {% endfor %}
+
+{% include stages_definition.html %}
