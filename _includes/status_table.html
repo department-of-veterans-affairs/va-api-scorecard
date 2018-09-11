@@ -20,7 +20,9 @@
   <thead>
     <tr>
       {% for stage in site.data.stages %}
-        <th scope='col'>
+        {% assign col_count = site.data.stages | size %}
+        {% assign col_width = 100 | divided_by: col_count %}
+        <th scope='col' style='width: {{ col_width }}%'>
           {{ stage.name }}
         </th>
       {% endfor %}
