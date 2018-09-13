@@ -1,0 +1,37 @@
+- field_name: 'name'
+  type: 'text'
+  label: 'API Name'
+  required: true
+- field_name: 'description'
+  type: 'textarea'
+  label: 'Description'
+  required: true
+- field_name: 'status'
+  type: 'select'
+  choices: 'statuses'
+  label: 'Stage Status'
+  required: true
+- field_name: 'homepage'
+  type: 'text'
+  label: 'Homepage URL'
+  required: false
+- field_name: 'github'
+  type: 'text'
+  label: 'Github URL'
+  required: false
+- field_name: 'stage'
+  type: 'select'
+  choices: 'stages'
+  label: 'Current Stage'
+  required: true
+- field_name: 'metrics'
+  type: 'textarea'
+  label: 'Metric'
+  required: false
+- field_name: 'success_criteria'
+  type: 'checkbox'
+  choices: 'stages'
+  label: 'Success Criteria'
+  required: true
+
+  

@@ -1,0 +1,24 @@
+{% assign form_id = 'new-api-data' %}
+{% assign class_name = 'data-element-' | append: form_id %}
+<form class="usa-form-large" id='{{form_id}}'>
+  <fieldset>
+    <legend>New API</legend>
+    {% for field in site.data.form_template %}
+      {% assign id=field.field_name %}
+      <label for="{{ id }}">{{field.label}} <span class="usa-input-label-helper"></span></label>
+      {% if field.type == 'textarea' %}
+        <textarea id="{{ id }}" class='{{class_name}}' name="{{field.field_name}}"></textarea>
+      {% elsif field.type == 'select' %}
+        <select id="{{id}}" name="{{id}}" class='{{class_name}}'>
+          <option value>- Select -</option>
+          {% for option in site.data[field.choices] %}
+          <option value="{{option.name}}">{{option.name}}</option>
+          {% endfor %}
+        </select>
+      {% else %}
+        <input id="{{field.field_name}}" name="{{field.field_name}}" type="{{field.type}}" class='{{class_name}}'>
+      {% endif %}
+    {% endfor %}
+  </fieldset>
+  <input type="button" value="Save" onclick="saveNewAPIData('{{form_id}}');">
+</form>

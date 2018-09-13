@@ -107,6 +107,22 @@
   }
 }
 
+.status-table{
+  th{
+    background-image: url('#{$image-path}/table-arrow.svg');
+    background-size: 100%;
+    background-color: #ffffff;
+    background-repeat: no-repeat;
+    border: none;
+    height: 50px;
+    vertical-align: middle;
+    text-align: center;
+    a, a:visited, a:hover{
+      color: black;
+    }
+  }
+}
+
 .no-link-style{
   color: black;
   text-decoration: none;
@@ -114,4 +130,8 @@
 .no-link-style:visited{
   color: black;
   text-decoration: none;
+}
+
+select{
+  background-image: none !important;
 }

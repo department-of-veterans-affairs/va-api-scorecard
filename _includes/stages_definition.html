@@ -1,7 +1,9 @@
 <h2>API Stages</h2>
 
 {% for stage in site.data.stages %}
-  <h3>{{ stage.name }}</h3>
+  <h3 id="stage-{{stage.name | replace: ' ', '' | downcase }}">
+    {{ stage.name }}
+  </h3>
   <p>
     Delivery success criteria
     <ul>

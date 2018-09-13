@@ -16,14 +16,14 @@
 
 
 
-<table style='width: 100%'>
+<table style='width: 100%' class='status-table'>
   <thead>
     <tr>
       {% for stage in site.data.stages %}
         {% assign col_count = site.data.stages | size %}
         {% assign col_width = 100 | divided_by: col_count %}
         <th scope='col' style='width: {{ col_width }}%'>
-          {{ stage.name }}
+          <a href="#stage-{{stage.name | replace: ' ', '' | downcase }}" class='no-link-style'>{{ stage.name }}</a>
         </th>
       {% endfor %}
     </tr>
@@ -37,17 +37,17 @@
                 {% for api_hash in site.data.apis %}
                 
                 {% assign api_data = api_hash[1] %}
-                {% assign status = site.data.statuses | where:'text', api_data.status | first %}
+                {% assign status = site.data.statuses | where:'name', api_data.status | first %}
                 {% if api_data.stage == stage.name %}
                   {% if displayed contains api_data %}
                   {% else %}
                     {% assign displayed = displayed | prepend: api_data %}
-                    <span>
+                    <div style='float:left' class='mr1'>
                       <img src="{{status.image | relative_url}}" alt="{{status.alt}}" title="{{status.alt}}" width='25px' align='top'>
-                    </span>
-                    <span>
+                    </div>
+                    <div>
                       <a href="#api-{{api_data.name | replace: ' ', '' | downcase }}" class='no-link-style'>{{ api_data.name }}</a>
-                    </span>
+                    </div>
                     {% break %}                
                   {% endif %}
                 {% endif %}
