@@ -72,78 +72,18 @@ function loadpage() {
     }
 }
 
-// Function for saving the pages
-function saveYAMLStore() {
 
-    $('#editor tr').each(function(i, row) {
-        $('#row-' + i + ' td').each(function(j, cell) {
-            $id = 'text-' + i + '-' + j;
-            if (document.getElementById($id)) {
-                $name = document.getElementById($id).name
-                $value = document.getElementById($id).value;
-                $yaml_store[i][$name] = $value;
-            }
-        });
-
-    });
-
-    $yaml_dump = jsyaml.dump($yaml_store);
-
-    // Grab the token from cookie
-    $oAuthToken = Cookies.get('token');
-
-    var github = new GitHub({ token: $oAuthToken, auth: "oauth" });
-    var repo = github.getRepo($org, $repo);
-
-    repo.getTree('gh-pages?recursive=true', function(err, tree) {
-
-        // I do not like looping through each item in tree, but only way I found to get SHA.
-        $.each(tree, function(treeKey, treeValue) {
-
-            $writepath = '_data/store.yaml';
-            $path = treeValue['path'];
-            $sha = treeValue['sha'];
-
-            //console.log($path + ' == ' + $writepath);
-            if ($path == $writepath) {
-                repo.writemanual('gh-pages', $writepath, $yaml_dump, 'Save', $sha, function(err) {});
-                //console.log("writing " + $writepath);
-                alert("saved " + $writepath);
-            }
-        });
-    });
-
-}
 
 function saveNewAPIData(form_id) {
-    // $('#editor tr').each(function (i, row) {
-    //   $('#row-' + i + ' td').each(function (j, cell) {
-    //     $id = 'text-' + i + '-' + j;
-    //     if(document.getElementById($id))
-    //       {
-    //         $name = document.getElementById($id).name
-    //         $value = document.getElementById($id).value;
-    //         $yaml_store[i][$name] = $value;
-    //       }
-    //   });
-
-    // });
     $yaml_store = {};
-    console.log('saveNewAPIData', form_id)
-    console.log('.data-element-' + 'form_id')
     $('.data-element-' + form_id).each(function(i, elem) {
-        // console.log('value = ', $(elem).val());
-        console.log('name=', $(elem).attr('name'))
         $name = $(elem).attr('name');
         $value = $(elem).val();
-        console.log(i)
         $yaml_store[$name] = $value;
     })
 
 
     $yaml_dump = jsyaml.safeDump($yaml_store);
-    console.log($yaml_store)
-    console.log($yaml_dump)
     // // Grab the token from cookie
     $oAuthToken = Cookies.get('token');
 
@@ -156,20 +96,16 @@ function saveNewAPIData(form_id) {
         $.each(tree, function(treeKey, treeValue) {
             $path = treeValue['path'];
             $sha = treeValue['sha'];
-
-            //console.log($path + ' == ' + $writepath);
             if ($path == $writepath) {
                 repo.writemanual('gh-pages', $writepath, $yaml_dump, 'Save', $sha, function(err) {});
-                //console.log("writing " + $writepath);
                 isNew = false;
-                console.log('updating file')
-                alert("saved " + $writepath);
+                alert("saved " + $writepath + '. Note: site may take up to 5 minutes to show changes.');
             }
         });
         if(isNew) {
-          console.log('creating new file');
           blob = repo.postBlob($yaml_dump, function(err, sha){
             repo.writemanual('gh-pages', $writepath, $yaml_dump, 'Save', sha, function(err) {});
+            alert("saved " + $writepath + '. Note: site may take up to 5 minutes to show changes.');
           });
         }
     });
