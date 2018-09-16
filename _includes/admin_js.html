@@ -1,185 +1,178 @@
 <script type="text/javascript">
+// This isn't meant to be well-written JavaScript.
+// It is meant to be a hackable, trainable moment.
+// I've tried to document best that I can.
+// Lot's of cleanup needed
 
-  // This isn't meant to be well-written JavaScript.
-  // It is meant to be a hackable, trainable moment.
-  // I've tried to document best that I can.
-  // Lot's of cleanup needed
+// Reset the cookie manually
+//Cookies.expire('token')
 
-  // Reset the cookie manually
-  //Cookies.expire('token')
+var $yaml_store = "";
 
-  var $yaml_store = "";
+// When you fork, make sure ad add your org / user and repo name to _config.yml
+var $org = '{{ site.github_user }}';
+var $repo = '{{ site.github_repo }}';
 
-  // When you fork, make sure ad add your org / user and repo name to _config.yml
-  var $org = '{{ site.github_user }}';
-  var $repo = '{{ site.github_repo }}';
-
-  function loadpage()
-    {
+function loadpage() {
     var $oAuthToken = document.getElementById('auth-token').value;
 
-    if($oAuthToken !='')
-      {
+    if ($oAuthToken != '') {
 
-      // Setting a cookie value
-      Cookies.set('token', $oAuthToken);
+        // Setting a cookie value
+        Cookies.set('token', $oAuthToken);
 
-      // Set with expiration
-      // Cookies.set('token', $oAuthToken, { expires: '01/01/2017' });
+        // Set with expiration
+        // Cookies.set('token', $oAuthToken, { expires: '01/01/2017' });
 
-      }
+    }
 
     // Grab the token from cookie
     $oAuthToken = Cookies.get('token');
 
     // If we have a token!
-    if($oAuthToken!='')
-      {
-      // Setup the Github connection
-      var github = new Github({token: $oAuthToken,auth: "oauth"});
-      var repo = github.getRepo($org,$repo);
+    if ($oAuthToken != '') {
+        // Setup the Github connection
+        var github = new Github({ token: $oAuthToken, auth: "oauth" });
+        var repo = github.getRepo($org, $repo);
 
-      // Le'ts try to just get the Github Repo tree
-      repo.getTree('gh-pages?recursive=true', function(err, tree) {
+        // Le'ts try to just get the Github Repo tree
+        repo.getTree('gh-pages?recursive=true', function(err, tree) {
 
-        if(err == null && $oAuthToken != null)
-          {
-            // If no error we have access, read YAML store
-            repo.read('gh-pages', '_data/store.yaml', function(err, data) {
+            if (err == null && $oAuthToken != null) {
+                // If no error we have access, read YAML store
+                repo.read('gh-pages', '_data/store.yaml', function(err, data) {
 
-              $yaml_store = jsyaml.load(data);
+                    $yaml_store = jsyaml.load(data);
 
-              $( "#editor" ).append( "<tr><td colspan='2'><hr style='padding: 0px; margin: 0px;'></td></tr>");
+                    $("#editor").append("<tr><td colspan='2'><hr style='padding: 0px; margin: 0px;'></td></tr>");
 
-              $.each($yaml_store, function($rowKey, $rowEntry) {
+                    $.each($yaml_store, function($rowKey, $rowEntry) {
 
-                $fieldNumKey = 0;
-                $.each($rowEntry, function($fieldKey, $fieldEntry) {
-                  $( "#editor" ).append( "<tr id='row-" + $rowKey + "' style='padding: 3px 0px 3px 0px;'><td id='row-" + $rowKey + "-" + $fieldNumKey + "' align='right' style='font-weight: bold;'>" + $fieldKey + ":</td><td><input type='text' name='" + $fieldKey + "' id='text-" + $rowKey + "-" + $fieldNumKey + "' value='" + $fieldEntry + "' style='width: 100%;' /></td></tr>" );
-                  $fieldNumKey++;
+                        $fieldNumKey = 0;
+                        $.each($rowEntry, function($fieldKey, $fieldEntry) {
+                            $("#editor").append("<tr id='row-" + $rowKey + "' style='padding: 3px 0px 3px 0px;'><td id='row-" + $rowKey + "-" + $fieldNumKey + "' align='right' style='font-weight: bold;'>" + $fieldKey + ":</td><td><input type='text' name='" + $fieldKey + "' id='text-" + $rowKey + "-" + $fieldNumKey + "' value='" + $fieldEntry + "' style='width: 100%;' /></td></tr>");
+                            $fieldNumKey++;
+                        });
+
+                        $("#editor").append("<tr><td colspan='2'><hr style='padding: 0px; margin: 0px;'></td></tr>");
+
+                    });
                 });
 
-                $( "#editor" ).append( "<tr><td colspan='2'><hr style='padding: 0px; margin: 0px;'></td></tr>");
+                // show button
+                document.getElementById('SaveYAML').style.display = '';
 
-              });
-            });
-
-            // show button
-            document.getElementById('SaveYAML').style.display = '';
-
-          }
-        else
-          {
-          // If error we DO NOT have access
-          alert('We have NO access to API & repo!');
-          }
+            } else {
+                // If error we DO NOT have access
+                alert('We have NO access to API & repo!');
+            }
 
         });
 
-      }
     }
+}
 
-  // Function for saving the pages
-  function saveYAMLStore()
-    {
+// Function for saving the pages
+function saveYAMLStore() {
 
-      $('#editor tr').each(function (i, row) {
-        $('#row-' + i + ' td').each(function (j, cell) {
-          $id = 'text-' + i + '-' + j;
-          if(document.getElementById($id))
-            {
-              $name = document.getElementById($id).name
-              $value = document.getElementById($id).value;
-              $yaml_store[i][$name] = $value;
+    $('#editor tr').each(function(i, row) {
+        $('#row-' + i + ' td').each(function(j, cell) {
+            $id = 'text-' + i + '-' + j;
+            if (document.getElementById($id)) {
+                $name = document.getElementById($id).name
+                $value = document.getElementById($id).value;
+                $yaml_store[i][$name] = $value;
             }
         });
 
-      });
+    });
 
-      $yaml_dump = jsyaml.dump($yaml_store);
+    $yaml_dump = jsyaml.dump($yaml_store);
 
-      // Grab the token from cookie
-      $oAuthToken = Cookies.get('token');
+    // Grab the token from cookie
+    $oAuthToken = Cookies.get('token');
 
-      var github = new GitHub({token: $oAuthToken,auth: "oauth"});
-      var repo = github.getRepo($org,$repo);
+    var github = new GitHub({ token: $oAuthToken, auth: "oauth" });
+    var repo = github.getRepo($org, $repo);
 
-      repo.getTree('gh-pages?recursive=true', function(err, tree) {
+    repo.getTree('gh-pages?recursive=true', function(err, tree) {
 
         // I do not like looping through each item in tree, but only way I found to get SHA.
         $.each(tree, function(treeKey, treeValue) {
 
-          $writepath = '_data/store.yaml';
-          $path = treeValue['path'];
-          $sha = treeValue['sha'];
+            $writepath = '_data/store.yaml';
+            $path = treeValue['path'];
+            $sha = treeValue['sha'];
 
-          //console.log($path + ' == ' + $writepath);
-          if($path==$writepath)
-            {
-            repo.writemanual('gh-pages',$writepath, $yaml_dump, 'Save', $sha, function(err) { });
-            //console.log("writing " + $writepath);
-            alert("saved " + $writepath);
+            //console.log($path + ' == ' + $writepath);
+            if ($path == $writepath) {
+                repo.writemanual('gh-pages', $writepath, $yaml_dump, 'Save', $sha, function(err) {});
+                //console.log("writing " + $writepath);
+                alert("saved " + $writepath);
             }
-          });
         });
+    });
 
-    }
+}
 
-    function saveNewAPIData(form_id){
-      // $('#editor tr').each(function (i, row) {
-      //   $('#row-' + i + ' td').each(function (j, cell) {
-      //     $id = 'text-' + i + '-' + j;
-      //     if(document.getElementById($id))
-      //       {
-      //         $name = document.getElementById($id).name
-      //         $value = document.getElementById($id).value;
-      //         $yaml_store[i][$name] = $value;
-      //       }
-      //   });
+function saveNewAPIData(form_id) {
+    // $('#editor tr').each(function (i, row) {
+    //   $('#row-' + i + ' td').each(function (j, cell) {
+    //     $id = 'text-' + i + '-' + j;
+    //     if(document.getElementById($id))
+    //       {
+    //         $name = document.getElementById($id).name
+    //         $value = document.getElementById($id).value;
+    //         $yaml_store[i][$name] = $value;
+    //       }
+    //   });
 
-      // });
-      $yaml_store = {};
-      console.log('saveNewAPIData', form_id)
-      console.log('.data-element-' + 'form_id')
-      $('.data-element-' + form_id).each(function(i, elem) {
+    // });
+    $yaml_store = {};
+    console.log('saveNewAPIData', form_id)
+    console.log('.data-element-' + 'form_id')
+    $('.data-element-' + form_id).each(function(i, elem) {
         // console.log('value = ', $(elem).val());
         console.log('name=', $(elem).attr('name'))
         $name = $(elem).attr('name');
         $value = $(elem).val();
         console.log(i)
         $yaml_store[$name] = $value;
-      })
-      
+    })
 
-      $yaml_dump = jsyaml.safeDump($yaml_store);
-      console.log($yaml_store)
-      console.log($yaml_dump)
-      // // Grab the token from cookie
-      $oAuthToken = Cookies.get('token');
 
-      var github = new GitHub({token: $oAuthToken,auth: "oauth"});
-      var repo = github.getRepo($org,$repo);
-      console.log('repo',repo);
-      // repo.getTree('gh-pages?recursive=true', function(err, tree) {
+    $yaml_dump = jsyaml.safeDump($yaml_store);
+    console.log($yaml_store)
+    console.log($yaml_dump)
+    // // Grab the token from cookie
+    $oAuthToken = Cookies.get('token');
 
-        // I do not like looping through each item in tree, but only way I found to get SHA.
-      //   $.each(tree, function(treeKey, treeValue) {
+    var github = new Github({ token: $oAuthToken, auth: "oauth" });
+    var repo = github.getRepo($org, $repo);
+    $writepath = '_data/apis/' + $yaml_store["name"] + '.yaml'
+    
+    repo.getTree('gh-pages?recursive=true', function(err, tree) {
+        var isNew = true;
+        $.each(tree, function(treeKey, treeValue) {
+            $path = treeValue['path'];
+            $sha = treeValue['sha'];
 
-      //     $writepath = '_data/store.yaml';
-      //     $path = treeValue['path'];
-      //     $sha = treeValue['sha'];
-
-      //     //console.log($path + ' == ' + $writepath);
-      //     if($path==$writepath)
-      //       {
-      //       repo.writemanual('gh-pages',$writepath, $yaml_dump, 'Save', $sha, function(err) { });
-      //       //console.log("writing " + $writepath);
-      //       alert("saved " + $writepath);
-      //       }
-      //     });
-      //   });
-      $writepath = '_data/apis/'+ $yaml_store["name"] + '.yaml'
-      repo.writeFile('gh-pages', $writepath, $yaml_dump, 'new api', {}, function(err){console.log(err);});
-    }
+            //console.log($path + ' == ' + $writepath);
+            if ($path == $writepath) {
+                repo.writemanual('gh-pages', $writepath, $yaml_dump, 'Save', $sha, function(err) {});
+                //console.log("writing " + $writepath);
+                isNew = false;
+                console.log('updating file')
+                alert("saved " + $writepath);
+            }
+        });
+        if(isNew) {
+          console.log('creating new file');
+          blob = repo.postBlob($yaml_dump, function(err, sha){
+            repo.writemanual('gh-pages', $writepath, $yaml_dump, 'Save', sha, function(err) {});
+          });
+        }
+    });
+}
 
 </script>
