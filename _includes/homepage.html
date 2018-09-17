@@ -23,7 +23,7 @@
     Sort by name | <a href="{{"/status" | relative_url}}"
           title="sort by name"> Sort by status</a>
   </div>
-  {% for api_hash in site.data.apis %}
+  {% for api_hash in site.data.apis | sort: first %}
     {% assign api_data = api_hash[1] %}
     {% include api.html api_data=api_hash %}
   {% endfor %}
