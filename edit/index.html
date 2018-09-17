@@ -4,8 +4,15 @@ title: Edit APIs - VA API Scorecard
 ---
 {% include admin_js.html %}
 <h3>VA API Scorecard</h3>
-<p>
-  This is the editor for this micro application, and will load the yaml from _data/store.yaml if you have permission to this site, which can then be <a href="/github-micro-tool-yaml/">viewed by going back to home page</a>.
+<p>Once you have a valid Github OAuth token entered into the text box below, the page will allow you to edit the api's. Without a valid API token, your changes will not be saved.
+  <h4>How to get a token</h4>
+  <ol>
+    <li>Go to <a href="https://github.com/settings/tokens" target="_blank"><strong>Github Personal Auth Token</strong></a></li>
+    <li>Click 'Generate new token'</li>
+    <li>Enter a token description</li>
+    <li>Select 'Repo' checkboxes</li>
+    <li>Select 'Generate'</li>
+  </ol>
 </p>
 <table width="100%" border="0" cellpadding="3" id="token">
     <tr>
@@ -16,8 +23,7 @@ title: Edit APIs - VA API Scorecard
 </table>
 <table width="100%" border="0" cellpadding="3" id="editor"></table>
 <center><input style="display: none;" type="button" name="SaveYAML" id="SaveYAML" value="Save YAML" onclick="saveYAMLStore();" /></center>
-<p><br />Once you have a valid Github OAuth token entered into the text box above, the page will allow you to edit the api's below. Without a valid API token, your changes will not be saved.
-</p>
+
 <div id="api-edit-form">
   {% for api_hash in site.data.apis %}
     {% assign api_data = api_hash[1] %}
