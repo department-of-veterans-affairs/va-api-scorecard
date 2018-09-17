@@ -200,3 +200,16 @@ select{
     display: none;
   }
 }
+
+.usa-nav-primary a{
+  color: #fff !important;
+}
+
+@media screen and (max-width: 900px) {
+  .usa-nav-primary a{
+    color: #fff !important;
+  }
+  .usa-nav-primary a:hover{
+    color: $color-primary !important;
+  }
+}
