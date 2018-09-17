@@ -1,14 +1,10 @@
-name: Benefactors API
-description: >-
-  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a viverra
-  augue. Duis ipsum ex, scelerisque quis semper nec, sollicitudin et tortor.
-  Donec ac lobortis mauris, a malesuada metus. In hac habitasse platea dictumst.
-  Mauris ac sodales nibh. Sed a gravida leo, et placerat metus.
-status: Yellow
-blocked: I am blocked because of something
-homepage: www.google.com
-github: www.github.com
-stage: Iterate
+name: Healthcare api
+description: this is the description for the healthcare api
+status: Green
+blocked: ''
+homepage: google.com
+github: github.com
+stage: Operations
 metrics: |-
   #### Funnel metrics
   <table>
@@ -33,7 +29,7 @@ metrics: |-
     </tbody>
   </table>
 success_criteria:
-  - completed: 'true'
+  - completed: 'false'
     stage: Define
     index: '0'
     criteria: Product vision is defined and aligns to a strategic imperative
@@ -49,7 +45,7 @@ success_criteria:
     criteria: >-
       Identified and documented all service, system, data, and human
       dependencies, including those that can be deprecated post deployment
-  - completed: 'true'
+  - completed: 'false'
     stage: Define
     index: '3'
     criteria: Defined using OpenAPI Specification and JSON Schema
@@ -80,37 +76,37 @@ success_criteria:
     stage: Prototype
     index: '1'
     criteria: Tested with real consumers in the test environment
-  - completed: 'true'
+  - completed: 'false'
     stage: Prototype
     index: '2'
     criteria: Provided a list of functional assertions for turning into tests
-  - completed: 'true'
+  - completed: 'false'
     stage: Iterate
     index: '0'
     criteria: 'Built iteratively, driven by ongoing feedback from real consumers'
-  - completed: 'true'
+  - completed: 'false'
     stage: Iterate
     index: '1'
     criteria: Tested performance against expected load and potential stress conditions
-  - completed: 'true'
+  - completed: 'false'
     stage: Iterate
     index: '2'
     criteria: Conducted security tests and resolved vulnerabilities
-  - completed: 'true'
+  - completed: 'false'
     stage: Iterate
     index: '3'
     criteria: Documentation is provided within a portal
-  - completed: 'true'
+  - completed: 'false'
     stage: Iterate
     index: '4'
     criteria: Developed an outreach plan for driving and measuring adoption
-  - completed: 'true'
+  - completed: 'false'
     stage: Iterate
     index: '5'
     criteria: >-
       Identified measurable performance metrics and documented baseline (if one
       exists) for future comparison
-  - completed: 'true'
+  - completed: 'false'
     stage: Iterate
     index: '6'
     criteria: >-
@@ -126,7 +122,7 @@ success_criteria:
     stage: Deploy
     index: '1'
     criteria: Ensured compliance with all VA privacy and security policies
-  - completed: 'true'
+  - completed: 'false'
     stage: Deploy
     index: '2'
     criteria: 'Obtained sign-off from all key stakeholders, including consumers'
@@ -144,11 +140,11 @@ success_criteria:
     stage: Deploy
     index: '5'
     criteria: Executed launch outreach plan
-  - completed: 'false'
+  - completed: 'true'
     stage: Operations
     index: '0'
     criteria: Retired any previous legacy services that need to be deprecated
-  - completed: 'false'
+  - completed: 'true'
     stage: Operations
     index: '1'
     criteria: Achieving business and operational performance targets
@@ -158,7 +154,7 @@ success_criteria:
     criteria: >-
       Developing and deploying product improvements iteratively, driven by
       ongoing consumer feedback and analysis of product usage
-  - completed: 'true'
+  - completed: 'false'
     stage: Operations
     index: '3'
     criteria: >-
