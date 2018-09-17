@@ -1,65 +1,68 @@
 {% assign status_obj = site.data.statuses | where:'name', api_data.status | first %}
-<div id='api-{{api_data.name | replace: ' ', '' | downcase }}'>
-  <h3>
-    <img src="{{status_obj.image | relative_url}}" alt="{{status_obj.alt}}" title="{{status_obj.alt}}" width='25px' align='top'>
-    {{api_data.name}}
-  </h3>
-  <p>
-    <div>
-      <a href='{{api_data.homepage}}'>Homepage</a> | 
-      <a href="{{api_data.github}}">Github</a>  
-    </div>
-  </p>
-
-  <p>
-    {{ api_data.description }}
-  </p>
-  <h4>
-    {{ api_data.stage }} Stage
-  </h4>
-  {% if api_data.blocked != '' %}
-    <div class='blocked-alert'>
-      <div style='float: left;' class='warning-symbol'>
-        <img src="{{'assets/img/alerts/warning.svg' | relative_url}}" alt="blocked" title="{{status.alt}}" width='25px' align='top'>
-      </div>
-      <div style='float: left'>
-        <strong>Blocked</strong>
-        <br>
-        {{api_data.blocked}}
-      </div>
-    </div>
-  {% endif %}
-  <div class='usa-accordion-bordered'>
-    {% assign c = forloop.index %}
-   <button class="usa-accordion-button"
-      aria-expanded="false"
-      aria-controls="api-{{c}}">
-      {% assign step_count = api_data.success_criteria | where:"stage", api_data.stage | where:"completed", true | size %}
-      {% assign step_total = api_data.success_criteria | where: "stage", api_data.stage | size %}
-      {{step_count}}/{{step_total}} Delivery success criteria satisfied
-    </button>
-    <div id='api-{{ c }}' class='usa-accordion-content'>
-      <ul class='unstyled-list' >
-        {% for step in api_data.success_criteria %}
-          {% if step.stage == api_data.stage %}
-            <li>
-              {% if step.completed == 'true' %}
-                <input type="checkbox" checked name="">
-              {% else %}
-                <input type="checkbox" name="">
-              {% endif %}
-              <label>{{step.criteria}}</label>
-            </li>
-          {% endif %}
-        {% endfor %}
-      </ul>
+{% assign api_div_id = api_data.name | replace: ' ', '' | downcase | prepend: 'api-' %}
+<div id="apis">
+  <div id='{{api_div_id}}' data-api-name='{{api_div_id}}' data-api-status='{{api_data.status}}' class='api-div'>
+    <h3>
+      <img src="{{status_obj.image | relative_url}}" alt="{{status_obj.alt}}" title="{{status_obj.alt}}" width='25px' align='top'>
+      {{api_data.name}}
+    </h3>
+    <p>
       <div>
-        {{ api_data.metrics | markdownify }}
+        <a href='{{api_data.homepage}}'>Homepage</a> | 
+        <a href="{{api_data.github}}">Github</a>  
+      </div>
+    </p>
+
+    <p>
+      {{ api_data.description }}
+    </p>
+    <h4>
+      {{ api_data.stage }} Stage
+    </h4>
+    {% if api_data.blocked != '' %}
+      <div class='blocked-alert'>
+        <div style='float: left;' class='warning-symbol'>
+          <img src="{{'assets/img/alerts/warning.svg' | relative_url}}" alt="blocked" title="{{status.alt}}" width='25px' align='top'>
+        </div>
+        <div style='float: left'>
+          <strong>Blocked</strong>
+          <br>
+          {{api_data.blocked}}
+        </div>
+      </div>
+    {% endif %}
+    <div class='usa-accordion-bordered'>
+      {% assign c = forloop.index %}
+     <button class="usa-accordion-button"
+        aria-expanded="false"
+        aria-controls="api-{{c}}">
+        {% assign step_count = api_data.success_criteria | where:"stage", api_data.stage | where:"completed", true | size %}
+        {% assign step_total = api_data.success_criteria | where: "stage", api_data.stage | size %}
+        {{step_count}}/{{step_total}} Delivery success criteria satisfied
+      </button>
+      <div id='api-{{ c }}' class='usa-accordion-content'>
+        <ul class='unstyled-list' >
+          {% for step in api_data.success_criteria %}
+            {% if step.stage == api_data.stage %}
+              <li>
+                {% if step.completed == 'true' %}
+                  <input type="checkbox" checked name="">
+                {% else %}
+                  <input type="checkbox" name="">
+                {% endif %}
+                <label>{{step.criteria}}</label>
+              </li>
+            {% endif %}
+          {% endfor %}
+        </ul>
+        <div>
+          {{ api_data.metrics | markdownify }}
+        </div>
       </div>
     </div>
+    <div class='mt2'>
+      <a href="#main-content">Return to scorecard</a>
+    </div>
+    <hr>
   </div>
-  <div class='mt2'>
-    <a href="#main-content">Return to scorecard</a>
-  </div>
-  <hr>
 </div>

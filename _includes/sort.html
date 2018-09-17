@@ -1,0 +1,8 @@
+<script type="text/javascript">
+  $(function(){
+    $('.api-div').sort(function(a,b){
+      return $(a).data('api-name') > $(b).data('api-name')
+    }).appendTo('#apis');
+  });
+
+</script>
