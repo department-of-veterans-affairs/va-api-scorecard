@@ -4,10 +4,11 @@ description: >-
   augue. Duis ipsum ex, scelerisque quis semper nec, sollicitudin et tortor.
   Donec ac lobortis mauris, a malesuada metus. In hac habitasse platea dictumst.
   Mauris ac sodales nibh. Sed a gravida leo, et placerat metus.
-status: Green
+status: Yellow
+blocked: I am blocked because of something
 homepage: www.google.com
 github: www.github.com
-stage: Prototype
+stage: Define
 metrics: |-
   #### Funnel metrics
   <table>
@@ -48,7 +49,7 @@ success_criteria:
     criteria: >-
       Identified and documented all service, system, data, and human
       dependencies, including those that can be deprecated post deployment
-  - completed: 'false'
+  - completed: 'true'
     stage: Define
     index: '3'
     criteria: Defined using OpenAPI Specification and JSON Schema
@@ -62,7 +63,7 @@ success_criteria:
     criteria: >-
       Established a base set of design practices and standards (e.g.,
       versioning, media types, status codes)
-  - completed: 'true'
+  - completed: 'false'
     stage: Define
     index: '6'
     criteria: >-
@@ -79,11 +80,11 @@ success_criteria:
     stage: Prototype
     index: '1'
     criteria: Tested with real consumers in the test environment
-  - completed: 'false'
+  - completed: 'true'
     stage: Prototype
     index: '2'
     criteria: Provided a list of functional assertions for turning into tests
-  - completed: 'false'
+  - completed: 'true'
     stage: Iterate
     index: '0'
     criteria: 'Built iteratively, driven by ongoing feedback from real consumers'
@@ -125,7 +126,7 @@ success_criteria:
     stage: Deploy
     index: '1'
     criteria: Ensured compliance with all VA privacy and security policies
-  - completed: 'false'
+  - completed: 'true'
     stage: Deploy
     index: '2'
     criteria: 'Obtained sign-off from all key stakeholders, including consumers'
@@ -157,7 +158,7 @@ success_criteria:
     criteria: >-
       Developing and deploying product improvements iteratively, driven by
       ongoing consumer feedback and analysis of product usage
-  - completed: 'false'
+  - completed: 'true'
     stage: Operations
     index: '3'
     criteria: >-
