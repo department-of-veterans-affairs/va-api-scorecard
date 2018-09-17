@@ -11,6 +11,10 @@
   choices: 'statuses'
   label: 'Stage Status'
   required: true
+- field_name: 'blocked'
+  type: 'text'
+  label: 'Blocked reason'
+  required: true
 - field_name: 'homepage'
   type: 'text'
   label: 'Homepage URL'

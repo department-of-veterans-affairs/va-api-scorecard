@@ -17,6 +17,18 @@
   <h4>
     {{ api_data.stage }} Stage
   </h4>
+  {% if api_data.blocked | size > 0 %}
+    <div class='blocked-alert'>
+      <div style='float: left;' class='warning-symbol'>
+        <img src="{{'assets/img/alerts/warning.svg' | relative_url}}" alt="blocked" title="{{status.alt}}" width='25px' align='top'>
+      </div>
+      <div style='float: left'>
+        <strong>Blocked</strong>
+        <br>
+        {{api_data.blocked}}
+      </div>
+    </div>
+  {% endif %}
   <div class='usa-accordion-bordered'>
     {% assign c = forloop.index %}
    <button class="usa-accordion-button"

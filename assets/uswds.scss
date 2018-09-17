@@ -135,3 +135,28 @@
 select{
   background-image: none !important;
 }
+
+.blocked-alert{
+  border-style: solid;
+  width: 50%;
+  padding: 10px 10px 10px 10px;
+  margin: 20px;
+  min-height: 30px;
+  float: left;
+  border-width: 1px;
+  border-color: black;
+  border-left-color: red;
+  border-left-width: 10px;
+  .warning-symbol{
+    vertical-align: middle;
+    padding-right: 10px;
+    height: 100%;
+    top: 50%;
+    bottom: 0;
+    margin: auto;
+    position: relative;
+    img{
+      vertical-align: middle;
+    }
+  }
+}
