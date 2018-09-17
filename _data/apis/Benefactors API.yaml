@@ -5,7 +5,7 @@ description: >-
   Donec ac lobortis mauris, a malesuada metus. In hac habitasse platea dictumst.
   Mauris ac sodales nibh. Sed a gravida leo, et placerat metus.
 status: Yellow
-blocked: I am blocked because of something
+blocked: I am blocked because of something.
 homepage: www.google.com
 github: www.github.com
 stage: Iterate
