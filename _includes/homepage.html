@@ -1,0 +1,32 @@
+<h3>Statuses, Updates, and blockers on VA APIs</h3>
+
+{% include status_table.html %}
+{% if sort %}
+  <br>
+  <div class="sort-box usa-width-one-whole">
+        <a href="{{"/" | relative_url}}"
+          title="sort by name">
+          Sort by name
+        </a> | Sort by status
+  </div>
+  {% for status in sort %}
+    {% for api_hash in site.data.apis %}
+      {% assign api_data = api_hash[1] %}
+      {% if status == api_data.status %}
+        {% include api.html api_data=api_hash %}
+      {% endif %}
+    {% endfor %}
+  {% endfor %}
+{% else %}
+  <br>
+  <div class="sort-box usa-width-one-whole">
+    Sort by name | <a href="{{"/status" | relative_url}}"
+          title="sort by name"> Sort by status</a>
+  </div>
+  {% for api_hash in site.data.apis %}
+    {% assign api_data = api_hash[1] %}
+    {% include api.html api_data=api_hash %}
+  {% endfor %}
+{% endif %}
+
+{% include stages_definition.html %}
