@@ -1,6 +1,6 @@
 - name: 'Grey'
   image: 'assets/img/alerts/grey-circle.svg'
-  alt: 'Just started current stage'
+  alt: 'Not yet started'
 - name: 'Yellow'
   image: 'assets/img/alerts/yellow-circle.svg'
   alt: "Having issues, but we're managing"
