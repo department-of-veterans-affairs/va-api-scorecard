@@ -4,7 +4,7 @@ description: >-
   augue. Duis ipsum ex, scelerisque quis semper nec, sollicitudin et tortor.
   Donec ac lobortis mauris, a malesuada metus. In hac habitasse platea dictumst.
   Mauris ac sodales nibh. Sed a gravida leo, et placerat metus.
-status: ''
+status: Yellow
 homepage: www.google.com
 github: www.github.com
 stage: Prototype
@@ -31,3 +31,145 @@ metrics: |-
       </tr>
     </tbody>
   </table>
+success_criteria:
+  - completed: 'false'
+    stage: Define
+    index: '0'
+    criteria: Product vision is defined and aligns to a strategic imperative
+  - completed: 'false'
+    stage: Define
+    index: '1'
+    criteria: >-
+      Identified and documented who the primary users are and what their needs
+      are through primary research
+  - completed: 'false'
+    stage: Define
+    index: '2'
+    criteria: >-
+      Identified and documented all service, system, data, and human
+      dependencies, including those that can be deprecated post deployment
+  - completed: 'false'
+    stage: Define
+    index: '3'
+    criteria: Defined using OpenAPI Specification and JSON Schema
+  - completed: 'false'
+    stage: Define
+    index: '4'
+    criteria: Team behind the service is defined
+  - completed: 'false'
+    stage: Define
+    index: '5'
+    criteria: >-
+      Established a base set of design practices and standards (e.g.,
+      versioning, media types, status codes)
+  - completed: 'false'
+    stage: Define
+    index: '6'
+    criteria: >-
+      Defined entire lifespan of the API, including deprecation, even if
+      generalized
+  - completed: 'true'
+    stage: Prototype
+    index: '0'
+    criteria: >-
+      Translated API definition into a functioning, virtualized, URL-accessible
+      API that uses synthetic, production-like data as part of the request and
+      responses (test environment)
+  - completed: 'true'
+    stage: Prototype
+    index: '1'
+    criteria: Tested with real consumers in the test environment
+  - completed: 'false'
+    stage: Prototype
+    index: '2'
+    criteria: Provided a list of functional assertions for turning into tests
+  - completed: 'false'
+    stage: Iterate
+    index: '0'
+    criteria: 'Built iteratively, driven by ongoing feedback from real consumers'
+  - completed: 'false'
+    stage: Iterate
+    index: '1'
+    criteria: Tested performance against expected load and potential stress conditions
+  - completed: 'false'
+    stage: Iterate
+    index: '2'
+    criteria: Conducted security tests and resolved vulnerabilities
+  - completed: 'false'
+    stage: Iterate
+    index: '3'
+    criteria: Documentation is provided within a portal
+  - completed: 'false'
+    stage: Iterate
+    index: '4'
+    criteria: Developed an outreach plan for driving and measuring adoption
+  - completed: 'false'
+    stage: Iterate
+    index: '5'
+    criteria: >-
+      Identified measurable performance metrics and documented baseline (if one
+      exists) for future comparison
+  - completed: 'false'
+    stage: Iterate
+    index: '6'
+    criteria: >-
+      Validated correct business and operational metrics are being collected,
+      using automated tools wherever possible
+  - completed: 'false'
+    stage: Deploy
+    index: '0'
+    criteria: >-
+      Passed all unit, integration, code quality, performance, and security
+      tests
+  - completed: 'false'
+    stage: Deploy
+    index: '1'
+    criteria: Ensured compliance with all VA privacy and security policies
+  - completed: 'false'
+    stage: Deploy
+    index: '2'
+    criteria: 'Obtained sign-off from all key stakeholders, including consumers'
+  - completed: 'false'
+    stage: Deploy
+    index: '3'
+    criteria: Registered with the API management platform
+  - completed: 'false'
+    stage: Deploy
+    index: '4'
+    criteria: >-
+      Launched into production environment and usage monitored to ensure any
+      errors are quickly remediated
+  - completed: 'false'
+    stage: Deploy
+    index: '5'
+    criteria: Executed launch outreach plan
+  - completed: 'false'
+    stage: Operations
+    index: '0'
+    criteria: Retired any previous legacy services that need to be deprecated
+  - completed: 'false'
+    stage: Operations
+    index: '1'
+    criteria: Achieving business and operational performance targets
+  - completed: 'false'
+    stage: Operations
+    index: '2'
+    criteria: >-
+      Developing and deploying product improvements iteratively, driven by
+      ongoing consumer feedback and analysis of product usage
+  - completed: 'false'
+    stage: Operations
+    index: '3'
+    criteria: >-
+      Executing and making any necessary adjustments to the outreach plan in
+      order to achieve performance targets
+  - completed: 'false'
+    stage: Operations
+    index: '4'
+    criteria: >-
+      Executing a process for evaluating, communicating, and supporting
+      deprecations to the API
+  - completed: 'false'
+    stage: Operations
+    index: '5'
+    criteria: Providing a regular summary of the service's general status
