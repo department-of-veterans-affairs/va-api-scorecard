@@ -8,7 +8,7 @@ status: Yellow
 blocked: I am blocked because of something
 homepage: www.google.com
 github: www.github.com
-stage: Define
+stage: Iterate
 metrics: |-
   #### Funnel metrics
   <table>
@@ -88,29 +88,29 @@ success_criteria:
     stage: Iterate
     index: '0'
     criteria: 'Built iteratively, driven by ongoing feedback from real consumers'
-  - completed: 'false'
+  - completed: 'true'
     stage: Iterate
     index: '1'
     criteria: Tested performance against expected load and potential stress conditions
-  - completed: 'false'
+  - completed: 'true'
     stage: Iterate
     index: '2'
     criteria: Conducted security tests and resolved vulnerabilities
-  - completed: 'false'
+  - completed: 'true'
     stage: Iterate
     index: '3'
     criteria: Documentation is provided within a portal
-  - completed: 'false'
+  - completed: 'true'
     stage: Iterate
     index: '4'
     criteria: Developed an outreach plan for driving and measuring adoption
-  - completed: 'false'
+  - completed: 'true'
     stage: Iterate
     index: '5'
     criteria: >-
       Identified measurable performance metrics and documented baseline (if one
       exists) for future comparison
-  - completed: 'false'
+  - completed: 'true'
     stage: Iterate
     index: '6'
     criteria: >-
