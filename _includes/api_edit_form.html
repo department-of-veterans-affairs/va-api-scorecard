@@ -40,7 +40,9 @@
               </legend>
               {% for step in stage.steps %}
                 {% assign step_id = sc_class_name | append: stage.name | append: forloop.index %}
-                {% if api_data['success_criteria'][stage.name][step.index].completed == 'true' %}
+                {% assign check_count =  api_data['success_criteria'] | where: 'stage', stage.name | where: 'index', step.index | where: 'completed', 'true' | size  %}
+                
+                {% if check_count == 1 %}
                   {% assign checked = 'checked' %}
                 {% else %}
                   {% assign checked = '' %}

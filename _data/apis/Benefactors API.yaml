@@ -33,7 +33,7 @@ metrics: |-
     </tbody>
   </table>
 success_criteria:
-  - completed: 'false'
+  - completed: 'true'
     stage: Define
     index: '0'
     criteria: Product vision is defined and aligns to a strategic imperative
