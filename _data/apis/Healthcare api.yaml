@@ -1,7 +1,7 @@
 name: Healthcare api
 description: this is the description for the healthcare api
-status: Red
-blocked: This is just a test
+status: Green
+blocked: ''
 homepage: google.com
 github: github.com
 stage: Operations
