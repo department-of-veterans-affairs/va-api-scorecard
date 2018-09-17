@@ -129,4 +129,35 @@ function saveNewAPIData(form_id) {
     });
 }
 
+function deleteAPIData(api){
+  $oAuthToken = Cookies.get('token');
+
+  var github = new Github({ token: $oAuthToken, auth: "oauth" });
+  var repo = github.getRepo($org, $repo);
+  $writepath = '_data/apis/' + api + '.yaml'
+  
+  // repo.delete('gh-pages', $writepath, function(err, s){
+  //   console.log(err);
+  //   if(!err){
+  //     alert($writepath + ' deleted.');
+  //   }
+  // })
+
+  repo.getTree('gh-pages?recursive=true', function(err, tree) {
+    $.each(tree, function(treeKey, treeValue) {
+        $path = treeValue['path'];
+        $sha = treeValue['sha'];
+        if ($path == $writepath) {
+            console.log('deleting', $sha);
+            repo.deletemanual('gh-pages', $writepath, $sha, function(err) {
+              console.log(err);
+            });
+            if(!err){
+              alert("Deleted. It may take 5 minutes for this to be displayed");
+            }
+        }
+    });
+  });
+}
+
 </script>

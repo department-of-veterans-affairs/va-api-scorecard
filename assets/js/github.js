@@ -52,7 +52,13 @@
         xhr.onreadystatechange = function () {
           if (this.readyState == 4) {
             if (this.status >= 200 && this.status < 300 || this.status === 304) {
-              cb(null, raw ? this.responseText : this.responseText ? JSON.parse(this.responseText) : true, this);
+              try{
+                var rt = JSON.parse(this.responseText)
+              }
+              catch(err){
+                var rt = this.responseText
+              }
+              cb(null, raw ? this.responseText : this.responseText ? rt : true, this);
             } else {
               cb({path: path, request: this, error: this.status});
             }
@@ -590,6 +596,18 @@
           delPath += '&branch=' + encodeURIComponent(branch);
           _request("DELETE", delPath, null, cb);
         });
+      };
+
+      this.deletemanual = function(branch, path, sha, cb) {
+          var delPath = repoPath + "/contents/" + path;
+          var params = {
+            "message": "Deleted " + path,
+            "sha": sha
+          };
+          delPath += "?message=" + encodeURIComponent(params.message);
+          delPath += "&sha=" + encodeURIComponent(params.sha);
+          delPath += '&branch=' + encodeURIComponent(branch);
+          _request("DELETE", delPath, null, cb);
       };
 
       // Move a file to a new location
