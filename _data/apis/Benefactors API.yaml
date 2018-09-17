@@ -4,7 +4,7 @@ description: >-
   augue. Duis ipsum ex, scelerisque quis semper nec, sollicitudin et tortor.
   Donec ac lobortis mauris, a malesuada metus. In hac habitasse platea dictumst.
   Mauris ac sodales nibh. Sed a gravida leo, et placerat metus.
-status: Yellow
+status: Green
 homepage: www.google.com
 github: www.github.com
 stage: Prototype
@@ -62,20 +62,20 @@ success_criteria:
     criteria: >-
       Established a base set of design practices and standards (e.g.,
       versioning, media types, status codes)
-  - completed: 'false'
+  - completed: 'true'
     stage: Define
     index: '6'
     criteria: >-
       Defined entire lifespan of the API, including deprecation, even if
       generalized
-  - completed: 'true'
+  - completed: 'false'
     stage: Prototype
     index: '0'
     criteria: >-
       Translated API definition into a functioning, virtualized, URL-accessible
       API that uses synthetic, production-like data as part of the request and
       responses (test environment)
-  - completed: 'true'
+  - completed: 'false'
     stage: Prototype
     index: '1'
     criteria: Tested with real consumers in the test environment
