@@ -82,8 +82,22 @@ function saveNewAPIData(form_id) {
         $yaml_store[$name] = $value;
     })
 
+    //Get success criteria
+    $yaml_store['success_criteria'] = [];
+    $('.data-element-' + form_id + '-sc input').each(function(i, elem) {
+      console.log($(elem).checked);
+      $yaml_store['success_criteria'].push({
+        completed: $(elem).prop('checked') ? 'true' : 'false',
+        stage: $(elem).attr('data-stage'),
+        index: $(elem).attr('data-step'),
+        criteria: $("label[for='" +$(elem).attr('id')+"']").text()
+      });
+    })
+
+    console.log($yaml_store);
 
     $yaml_dump = jsyaml.safeDump($yaml_store);
+    console.log('yamldump = ', $yaml_dump);
     // // Grab the token from cookie
     $oAuthToken = Cookies.get('token');
 
@@ -97,14 +111,18 @@ function saveNewAPIData(form_id) {
             $path = treeValue['path'];
             $sha = treeValue['sha'];
             if ($path == $writepath) {
-                repo.writemanual('gh-pages', $writepath, $yaml_dump, 'Save', $sha, function(err) {});
+                repo.writemanual('gh-pages', $writepath, $yaml_dump, 'Save', $sha, function(err) {
+                  console.log(err);
+                });
                 isNew = false;
                 alert("saved " + $writepath + '. Note: site may take up to 5 minutes to show changes.');
             }
         });
         if(isNew) {
           blob = repo.postBlob($yaml_dump, function(err, sha){
-            repo.writemanual('gh-pages', $writepath, $yaml_dump, 'Save', sha, function(err) {});
+            repo.writemanual('gh-pages', $writepath, $yaml_dump, 'Save', sha, function(err) {
+              console.log(err);
+            });
             alert("saved " + $writepath + '. Note: site may take up to 5 minutes to show changes.');
           });
         }

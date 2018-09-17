@@ -1,22 +1,54 @@
-{% assign form_id = 'new-api-data' %}
+{% comment %}{% assign form_id = 'new-api-data' %}{% endcomment %}
 {% assign class_name = 'data-element-' | append: form_id %}
+
 <form class="usa-form-large" id='{{form_id}}'>
   <fieldset>
-    <legend>New API</legend>
+    {% if form_id == 'new-api' %}
+      <legend>New API</legend>
+    {% else %}
+      <legend>Edit {{api_data.name}}</legend>
+    {% endif %}
     {% for field in site.data.form_template %}
       {% assign id=field.field_name %}
-      <label for="{{ id }}">{{field.label}} <span class="usa-input-label-helper"></span></label>
+      {% if field.type != 'success-criteria' %}
+        <label for="{{form_id}}-{{ id }}">{{field.label}} <span class="usa-input-label-helper"></span></label>
+      {% endif %}
       {% if field.type == 'textarea' %}
-        <textarea id="{{ id }}" class='{{class_name}}' name="{{field.field_name}}"></textarea>
+        <textarea id="{{form_id}}-{{ id }}" class='{{class_name}}' name="{{field.field_name}}">{{api_data[field.field_name]}}</textarea>
+      
       {% elsif field.type == 'select' %}
-        <select id="{{id}}" name="{{id}}" class='{{class_name}}'>
+        <select id="{{form_id}}-{{id}}" name="{{id}}" class='{{class_name}}'>
           <option value>- Select -</option>
           {% for option in site.data[field.choices] %}
           <option value="{{option.name}}">{{option.name}}</option>
           {% endfor %}
         </select>
+      {% elsif field.type == 'success-criteria' %}
+        {% assign sc_class_name = class_name | append: '-sc' %}
+        <fieldset class='{{sc_class_name}}'>
+          <legend>
+            Success Criteria
+          </legend>
+          {% for stage in site.data.stages %}
+            <fieldset>
+              <legend>
+                {{ stage.name }}
+              </legend>
+              {% for step in stage.steps %}
+                {% assign step_id = sc_class_name | append: stage.name | append: forloop.index %}
+                {% if api_data['success_criteria'][stage.name][step.index].completed == 'true' %}
+                  {% assign checked = 'checked' %}
+                {% else %}
+                  {% assign checked = '' %}
+                {% endif %}
+                <input data-stage="{{stage.name}}" data-step="{{step.index}}" id='{{step_id}}' class='{{sc_class_name}}' type="checkbox" name="{{sc_class_name}}" value="Bike" {{checked}}>
+                <label for='{{step_id}}'>{{step.text}}</label>
+              {% endfor %}
+            </fieldset>
+          {% endfor %}
+        </fieldset>
       {% else %}
-        <input id="{{field.field_name}}" name="{{field.field_name}}" type="{{field.type}}" class='{{class_name}}'>
+        <input id="{{form_id}}-{{field.field_name}}" name="{{field.field_name}}" type="{{field.type}}" class='{{class_name}}' value="{{api_data[field.field_name]}}">
       {% endif %}
     {% endfor %}
   </fieldset>

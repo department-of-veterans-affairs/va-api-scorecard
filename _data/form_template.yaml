@@ -29,7 +29,7 @@
   label: 'Metric'
   required: false
 - field_name: 'success_criteria'
-  type: 'checkbox'
+  type: 'success-criteria'
   choices: 'stages'
   label: 'Success Criteria'
   required: true

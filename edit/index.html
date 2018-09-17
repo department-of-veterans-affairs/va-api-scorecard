@@ -19,6 +19,13 @@ title: Edit APIs - VA API Scorecard
 <p><br />Once you have a valid Github OAuth toke entered into the text box above, the page will load, and you should be able to save any changes to the underlying Github repository. Making for a completely self-contained, interactive web application, that can be used for any number of purposes.
 </p>
 
-{% include api_edit_form.html %}
+{% for api_hash in site.data.apis %}
+  {% assign api_data = api_hash[1] %}
+  {% include edit_api.html api_data=api_hash %}
+{% endfor %}
+
+{% assign form_id='new-api' %}
+{% assign api_data=site.data.blank_api %}
+{% include api_edit_form.html form_id=form_id %}
 
 

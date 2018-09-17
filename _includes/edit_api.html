@@ -1,0 +1,12 @@
+<div class='usa-accordion-bordered'>
+    {% assign c = forloop.index %}
+    {% assign form_id = c | prepend:'api-' %}
+   <button class="usa-accordion-button"
+      aria-expanded="false"
+      aria-controls="{{form_id}}">
+      {{api_data.name}}
+    </button>
+    <div id='api-{{ c }}' class='usa-accordion-content'>
+      {% include api_edit_form.html api_data=api_data form_id=api_index %}
+    </div>
+  </div>
