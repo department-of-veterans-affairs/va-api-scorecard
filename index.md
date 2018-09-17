@@ -1,5 +1,5 @@
 ---
 layout: documentation
 ---
-{% assign sort = false %}
-{% include homepage.html %}
+{% assign sort_apis = false %}
+{% include homepage.html sort=sort_apis %}
