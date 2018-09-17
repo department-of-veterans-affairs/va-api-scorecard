@@ -1,5 +1,5 @@
 ---
 layout: documentation
 ---
-{% assign sort=site.data.sort %}
-{% include homepage.html sort=sorted_apis %}
+
+{% include homepage.html sort=site.data.sort %}

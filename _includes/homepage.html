@@ -1,7 +1,7 @@
 <h3>Statuses, Updates, and blockers on VA APIs</h3>
 
 {% include status_table.html %}
-{% if sort %}
+{% if include.sort %}
   <br>
   <div class="sort-box usa-width-one-whole">
         <a href="{{"/" | relative_url}}"
@@ -9,7 +9,7 @@
           Sort by name
         </a> | Sort by status
   </div>
-  {% for status in sort %}
+  {% for status in include.sort %}
     {% for api_hash in site.data.apis %}
       {% assign api_data = api_hash[1] %}
       {% if status == api_data.status %}
