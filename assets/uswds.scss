@@ -167,3 +167,36 @@ select{
   text-align: right;
   margin-bottom: 20px;
 }
+
+@media screen and (max-width: 700px) {
+  #title_message {
+    visibility: hidden;
+    clear: both;
+    float: left;
+    margin: 10px auto 5px 20px;
+    width: 28%;
+    display: none;
+  }
+  .status-table{
+    visibility: hidden;
+    clear: both;
+    float: left;
+    margin: 10px auto 5px 20px;
+    width: 28%;
+    display: none;
+  }
+  .legend-table{
+    width: 100%;
+  }
+}
+
+@media screen and (min-width: 701px){
+  .status-table-mobile{
+    visibility: hidden;
+    clear: both;
+    float: left;
+    margin: 10px auto 5px 20px;
+    width: 28%;
+    display: none;
+  }
+}

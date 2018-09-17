@@ -59,6 +59,30 @@
         {% endfor %}
   </tbody>
 </table>
+
+<div style='width: 100%' class='status-table-mobile'>
+  {% for stage in site.data.stages %}
+    <h4>
+      <a href="#stage-{{stage.name | replace: ' ', '' | downcase }}" class='no-link-style'>{{ stage.name }}</a>
+    </h4>
+    {% for api_hash in site.data.apis %}
+                
+      {% assign api_data = api_hash[1] %}
+      {% assign status = site.data.statuses | where:'name', api_data.status | first %}
+      {% if api_data.stage == stage.name %}
+          <div style='float:left' class='mr1'>
+            <img src="{{status.image | relative_url}}" alt="{{status.alt}}" title="{{status.alt}}" width='25px' align='top'>
+          </div>
+          <div>
+            <a href="#api-{{api_data.name | replace: ' ', '' | downcase }}" class='no-link-style'>{{ api_data.name }}</a>
+          </div>
+      {% endif %}
+
+    {% endfor %}
+  {% endfor %}
+</div>
+
+
 <table class='legend-table'>
   <thead>
     <tr>
