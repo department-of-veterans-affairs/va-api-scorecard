@@ -5,4 +5,26 @@ homepage: ''
 github: ''
 stage: ''
 success_criteria: ''
-metrics: ''
+metrics: |-
+  #### Funnel metrics
+  <table>
+    <thead>
+      <tr>
+        <th>Metric</th>
+        <th>Current</th>
+        <th>Target</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Total API Key Registrations</td>
+        <td>75</td>
+        <td>100</td>
+      </tr>
+      <tr>
+        <td>Total API Calls in Sandbox</td>
+        <td>1075</td>
+        <td>2000</td>
+      </tr>
+    </tbody>
+  </table>

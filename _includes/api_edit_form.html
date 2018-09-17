@@ -54,6 +54,6 @@
   </fieldset>
   <input type="button" value="Save" onclick="saveNewAPIData('{{form_id}}');">
   {% if form_id != 'new-api' %}
-    <input type="button" value="Delete" onclick="deleteAPIData('{{api_data.name}}');">
+    <input class='usa-button-secondary' type="button" value="Delete" onclick="deleteAPIData('{{api_data.name}}');">
   {% endif %}
 </form>

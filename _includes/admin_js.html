@@ -25,12 +25,18 @@ function loadpage() {
         // Cookies.set('token', $oAuthToken, { expires: '01/01/2017' });
 
     }
+    showForm();
+}
 
-    // Grab the token from cookie
+$(function() {
+    showForm();
+});
+
+function showForm(){
+  // Grab the token from cookie
     $oAuthToken = Cookies.get('token');
-
     // If we have a token!
-    if ($oAuthToken != '') {
+    if ($oAuthToken) {
         // Setup the Github connection
         var github = new Github({ token: $oAuthToken, auth: "oauth" });
         var repo = github.getRepo($org, $repo);
@@ -39,28 +45,7 @@ function loadpage() {
         repo.getTree('gh-pages?recursive=true', function(err, tree) {
 
             if (err == null && $oAuthToken != null) {
-                // If no error we have access, read YAML store
-                repo.read('gh-pages', '_data/store.yaml', function(err, data) {
-
-                    $yaml_store = jsyaml.load(data);
-
-                    $("#editor").append("<tr><td colspan='2'><hr style='padding: 0px; margin: 0px;'></td></tr>");
-
-                    $.each($yaml_store, function($rowKey, $rowEntry) {
-
-                        $fieldNumKey = 0;
-                        $.each($rowEntry, function($fieldKey, $fieldEntry) {
-                            $("#editor").append("<tr id='row-" + $rowKey + "' style='padding: 3px 0px 3px 0px;'><td id='row-" + $rowKey + "-" + $fieldNumKey + "' align='right' style='font-weight: bold;'>" + $fieldKey + ":</td><td><input type='text' name='" + $fieldKey + "' id='text-" + $rowKey + "-" + $fieldNumKey + "' value='" + $fieldEntry + "' style='width: 100%;' /></td></tr>");
-                            $fieldNumKey++;
-                        });
-
-                        $("#editor").append("<tr><td colspan='2'><hr style='padding: 0px; margin: 0px;'></td></tr>");
-
-                    });
-                });
-
-                // show button
-                document.getElementById('SaveYAML').style.display = '';
+                $('#api-edit-form').show();
 
             } else {
                 // If error we DO NOT have access
@@ -69,10 +54,10 @@ function loadpage() {
 
         });
 
+    }else{
+      $('#api-edit-form').hide();
     }
 }
-
-
 
 function saveNewAPIData(form_id) {
     $yaml_store = {};
