@@ -3,7 +3,7 @@ description: ''
 status: ''
 homepage: ''
 github: ''
-stage: ''
+stage: 'Operations'
 metrics: ''
 success_criteria:
   - completed: 'false'

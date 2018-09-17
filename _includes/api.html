@@ -22,21 +22,23 @@
    <button class="usa-accordion-button"
       aria-expanded="false"
       aria-controls="api-{{c}}">
-      {% assign step_count = api_data.success_criteria | where:"completed", true | size %}
-
-      {{step_count}}/{{api_data.success_criteria | size}} Delivery success criteria satisfied
+      {% assign step_count = api_data.success_criteria | where:"stage", api_data.stage | where:"completed", true | size %}
+      {% assign step_total = api_data.success_criteria | where: "stage", api_data.stage | size %}
+      {{step_count}}/{{step_total}} Delivery success criteria satisfied
     </button>
     <div id='api-{{ c }}' class='usa-accordion-content'>
       <ul class='unstyled-list' >
         {% for step in api_data.success_criteria %}
-          <li>
-            {% if step.completed %}
-              <input type="checkbox" checked name="">
-            {% else %}
-              <input type="checkbox" name="">
-            {% endif %}
-            <label>{{step.criteria}}</label>
-          </li>
+          {% if step.stage == api_data.stage %}
+            <li>
+              {% if step.completed == 'true' %}
+                <input type="checkbox" checked name="">
+              {% else %}
+                <input type="checkbox" name="">
+              {% endif %}
+              <label>{{step.criteria}}</label>
+            </li>
+          {% endif %}
         {% endfor %}
       </ul>
       <div>
