@@ -113,60 +113,60 @@ success_criteria:
       Validated correct business and operational metrics are being collected,
       using automated tools wherever possible
   - completed: 'false'
-    stage: Deploy
+    stage: Launch
     index: '0'
     criteria: >-
       Passed all unit, integration, code quality, performance, and security
       tests
   - completed: 'false'
-    stage: Deploy
+    stage: Launch
     index: '1'
     criteria: Ensured compliance with all VA privacy and security policies
   - completed: 'false'
-    stage: Deploy
+    stage: Launch
     index: '2'
     criteria: 'Obtained sign-off from all key stakeholders, including consumers'
   - completed: 'false'
-    stage: Deploy
+    stage: Launch
     index: '3'
     criteria: Registered with the API management platform
   - completed: 'false'
-    stage: Deploy
+    stage: Launch
     index: '4'
     criteria: >-
       Launched into production environment and usage monitored to ensure any
       errors are quickly remediated
   - completed: 'false'
-    stage: Deploy
+    stage: Launch
     index: '5'
     criteria: Executed launch outreach plan
   - completed: 'false'
-    stage: Operations
+    stage: Live
     index: '0'
     criteria: Retired any previous legacy services that need to be deprecated
   - completed: 'false'
-    stage: Operations
+    stage: Live
     index: '1'
     criteria: Achieving business and operational performance targets
   - completed: 'false'
-    stage: Operations
+    stage: Live
     index: '2'
     criteria: >-
       Developing and deploying product improvements iteratively, driven by
       ongoing consumer feedback and analysis of product usage
   - completed: 'false'
-    stage: Operations
+    stage: Live
     index: '3'
     criteria: >-
       Executing and making any necessary adjustments to the outreach plan in
       order to achieve performance targets
   - completed: 'false'
-    stage: Operations
+    stage: Live
     index: '4'
     criteria: >-
       Executing a process for evaluating, communicating, and supporting
       deprecations to the API
   - completed: 'false'
-    stage: Operations
+    stage: Live
     index: '5'
     criteria: Providing a regular summary of the service's general status
