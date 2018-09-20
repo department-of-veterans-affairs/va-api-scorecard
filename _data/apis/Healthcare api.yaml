@@ -160,7 +160,7 @@ success_criteria:
     criteria: >-
       Executing and making any necessary adjustments to the outreach plan in
       order to achieve performance targets
-  - completed: 'false'
+  - completed: 'true'
     stage: Operations
     index: '4'
     criteria: >-
