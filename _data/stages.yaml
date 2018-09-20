@@ -38,7 +38,7 @@
       index: 5
     - text: Validated correct business and operational metrics are being collected, using automated tools wherever possible
       index: 6
-- name: Deploy
+- name: Launch
   steps:
     - text: Passed all unit, integration, code quality, performance, and security tests
       index: 0
