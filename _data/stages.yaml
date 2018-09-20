@@ -52,7 +52,7 @@
       index: 4
     - text: Executed launch outreach plan
       index: 5
-- name: Operations
+- name: Live
   steps:
     - text: Retired any previous legacy services that need to be deprecated
       index: 0
