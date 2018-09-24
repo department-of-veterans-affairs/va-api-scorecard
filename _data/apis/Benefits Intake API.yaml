@@ -3,8 +3,8 @@ description: >+
   Build tools to help Veterans electronically manage, submit, track, and receive
   notifications on their claims.
 
-status: Green
-blocked: ''
+status: Yellow
+blocked: Change in requirements from CalVets
 homepage: 'https://developer.va.gov/explore/benefits/docs/benefits'
 github: 'https://github.com/department-of-veterans-affairs/vets-contrib'
 stage: Live
