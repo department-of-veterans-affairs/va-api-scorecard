@@ -33,25 +33,35 @@
           <legend>
             Success Criteria
           </legend>
-          {% for stage in site.data.stages %}
-            <fieldset>
-              <legend>
-                {{ stage.name }}
-              </legend>
-              {% for step in stage.steps %}
-                {% assign step_id = sc_class_name | append: stage.name | append: forloop.index %}
-                {% assign check_count =  api_data['success_criteria'] | where: 'stage', stage.name | where: 'index', step.index | where: 'completed', 'true' | size  %}
-                
-                {% if check_count == 1 %}
-                  {% assign checked = 'checked' %}
-                {% else %}
-                  {% assign checked = '' %}
-                {% endif %}
-                <input data-stage="{{stage.name}}" data-step="{{step.index}}" id='{{step_id}}' class='{{sc_class_name}}' type="checkbox" name="{{sc_class_name}}" value="Bike" {{checked}}>
-                <label for='{{step_id}}'>{{step.text}}</label>
-              {% endfor %}
-            </fieldset>
-          {% endfor %}
+            {% for stage in site.data.stages %}
+              {% assign sc_accordian_id = sc_class_name | append: stage.name %}
+              <div class='usa-accordion-bordered'>
+                <button class="usa-accordion-button"
+                  aria-expanded="false"
+                  aria-controls="{{sc_accordian_id}}">
+                  {{stage.name}}
+                </button>
+                <div id='{{sc_accordian_id}}' class='usa-accordion-content'>
+                  <fieldset>
+                    <legend>
+                      {{ stage.name }}
+                    </legend>
+                    {% for step in stage.steps %}
+                      {% assign step_id = sc_class_name | append: stage.name | append: forloop.index %}
+                      {% assign check_count =  api_data['success_criteria'] | where: 'stage', stage.name | where: 'index', step.index | where: 'completed', 'true' | size  %}
+                      
+                      {% if check_count == 1 %}
+                        {% assign checked = 'checked' %}
+                      {% else %}
+                        {% assign checked = '' %}
+                      {% endif %}
+                      <input data-stage="{{stage.name}}" data-step="{{step.index}}" id='{{step_id}}' class='{{sc_class_name}}' type="checkbox" name="{{sc_class_name}}" value="Bike" {{checked}}>
+                      <label for='{{step_id}}'>{{step.text}}</label>
+                    {% endfor %}
+                  </fieldset>
+                </div>
+              </div>
+            {% endfor %}
         </fieldset>
       {% else %}
         <input id="{{form_id}}-{{field.field_name}}" name="{{field.field_name}}" type="{{field.type}}" class='{{class_name}}' value="{{api_data[field.field_name]}}">

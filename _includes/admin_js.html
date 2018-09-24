@@ -109,6 +109,8 @@ function saveNewAPIData(form_id) {
               console.log(err);
             });
             alert("saved " + $writepath + '. Note: site may take up to 5 minutes to show changes.');
+            window.scrollTo(0, 0);
+            location.reload();
           });
         }
     });
