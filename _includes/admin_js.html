@@ -141,6 +141,8 @@ function deleteAPIData(api){
             });
             if(!err){
               alert("Deleted. It may take 5 minutes for this to be displayed");
+              window.scrollTo(0, 0);
+              location.reload();
             }
         }
     });
