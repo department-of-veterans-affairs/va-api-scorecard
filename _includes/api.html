@@ -8,8 +8,19 @@
     </h3>
     <p>
       <div>
-        <a href='{{api_data.homepage}}'>Homepage</a> | 
+        {% if api_data.homepage != '' %}
+          <a href='{{api_data.homepage}}'>Homepage</a>
+          {% if api_data.github %}
+           | 
+          {% endif %}
+        {% endif %}
+        {% if api_data.github != '' %} 
         <a href="{{api_data.github}}">Github</a>  
+        {% endif %}
+         | 
+        <a href="{{ "/edit" | relative_url }}">
+          Edit
+        </a>
       </div>
     </p>
 

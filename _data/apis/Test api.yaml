@@ -2,7 +2,7 @@ name: Test api
 description: test description
 status: Grey
 blocked: ''
-homepage: google.com
+homepage: ''
 github: github.com
 stage: Iterate
 metrics: |-
