@@ -2,9 +2,9 @@ name: Healthcare api
 description: this is the description for the healthcare api.zzaa
 status: Green
 blocked: ''
-homepage: google.com
-github: github.com
-stage: Live
+homepage: developer.va.gov/providerapi
+github: github.com/departmentofveteransaffairs/api/provider
+stage: Define
 metrics: |-
   #### Funnel metrics
   <table>
@@ -18,8 +18,8 @@ metrics: |-
     <tbody>
       <tr>
         <td>Total API Key Registrations</td>
-        <td>75</td>
-        <td>100</td>
+        <td>0</td>
+        <td>0</td>
       </tr>
       <tr>
         <td>Total API Calls in Sandbox</td>
@@ -29,11 +29,11 @@ metrics: |-
     </tbody>
   </table>
 success_criteria:
-  - completed: 'false'
+  - completed: 'true'
     stage: Define
     index: '0'
     criteria: Product vision is defined and aligns to a strategic imperative
-  - completed: 'false'
+  - completed: 'true'
     stage: Define
     index: '1'
     criteria: >-
@@ -49,7 +49,7 @@ success_criteria:
     stage: Define
     index: '3'
     criteria: Defined using OpenAPI Specification and JSON Schema
-  - completed: 'false'
+  - completed: 'true'
     stage: Define
     index: '4'
     criteria: Team behind the service is defined
