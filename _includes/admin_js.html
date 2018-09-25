@@ -28,6 +28,12 @@ function loadpage() {
     showForm();
 }
 
+function logout(){
+  Cookies.expire('token');
+  window.scrollTo(0, 0);
+  location.reload();
+}
+
 $(function() {
     showForm();
 });
@@ -46,6 +52,7 @@ function showForm(){
 
             if (err == null && $oAuthToken != null) {
                 $('#api-edit-form').show();
+                $('.login-form').hide();
 
             } else {
                 // If error we DO NOT have access
@@ -56,6 +63,7 @@ function showForm(){
 
     }else{
       $('#api-edit-form').hide();
+      $('.login-form').show();
     }
 }
 

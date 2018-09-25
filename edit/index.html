@@ -3,28 +3,36 @@ layout: documentation
 title: Edit APIs - VA API Scorecard 
 ---
 {% include admin_js.html %}
-<h3>VA API Scorecard</h3>
-<p>Once you have a valid Github OAuth token entered into the text box below, the page will allow you to edit the api's. Without a valid API token, your changes will not be saved.
-  <h4>How to get a token</h4>
-  <ol>
-    <li>Go to <a href="https://github.com/settings/tokens" target="_blank"><strong>Github Personal Auth Token</strong></a></li>
-    <li>Click 'Generate new token'</li>
-    <li>Enter a token description</li>
-    <li>Select 'Repo' checkboxes</li>
-    <li>Select 'Generate'</li>
-  </ol>
-</p>
-<table width="100%" border="0" cellpadding="3" id="token">
-    <tr>
-      <td align="right"><a href="https://github.com/settings/tokens" target="_blank"><strong>Github Personal Auth Token:</strong></a></td>
-      <td align="left"><input type="password" name="auth-token" id="auth-token" value="" size="50" /></td>
-      <td align="right"><input type="button" name="loadpage" value="Load Data From YAML" onclick="loadpage();" /></td>
-    </tr>
-</table>
-<table width="100%" border="0" cellpadding="3" id="editor"></table>
-<center><input style="display: none;" type="button" name="SaveYAML" id="SaveYAML" value="Save YAML" onclick="saveYAMLStore();" /></center>
+<h2>Edit APIs</h2>
+<div class="login-form" style='display:none;'>
+  <p>Once you have a valid Github OAuth token entered into the text box below, the page will allow you to edit the api's. Without a valid API token, your changes will not be saved.
+    <h4>How to get a token</h4>
+    <ol>
+      <li>Go to <a href="https://github.com/settings/tokens" target="_blank"><strong>Github Personal Auth Token</strong></a></li>
+      <li>Click 'Generate new token'</li>
+      <li>Enter a token description</li>
+      <li>Select 'Repo' checkboxes</li>
+      <li>Select 'Generate'</li>
+    </ol>
+  </p>
+  <table width="100%" border="0" cellpadding="3" id="token">
+      <tr>
+        <td align="right"><a href="https://github.com/settings/tokens" target="_blank"><strong>Github Personal Auth Token:</strong></a></td>
+        <td align="left"><input type="password" name="auth-token" id="auth-token" value="" size="50" /></td>
+        <td align="right"><input type="button" name="loadpage" value="Load Data From YAML" onclick="loadpage();" /></td>
+      </tr>
+  </table>
+</div>
 
 <div id="api-edit-form">
+  <p>
+    You can use the following forms to edit the API's status and various other data points that appear on the main page. <strong>Note: changes may take up to five minutes to show on the main page as the site is automatically rebuilt when changes are made.</strong>
+  </p>
+  <div class="clearfix">
+    <div class="m1 right">
+      <button class='usa-button' onclick='logout();'>Log out</button>
+    </div>
+  </div>
   {% for api_hash in site.data.apis %}
     {% assign api_data = api_hash[1] %}
     {% include edit_api.html api_data=api_hash %}
