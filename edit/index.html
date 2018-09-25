@@ -30,7 +30,7 @@ title: Edit APIs - VA API Scorecard
   </p>
   <div class="clearfix">
     <div class="m1 right">
-      <button class='usa-button' onclick='logout();'>Log out</button>
+      <button class='usa-button-secondary' onclick='logout();'>Log out</button>
     </div>
   </div>
   {% for api_hash in site.data.apis %}
@@ -38,7 +38,16 @@ title: Edit APIs - VA API Scorecard
     {% include edit_api.html api_data=api_hash %}
   {% endfor %}
 
+
+  <div class="clearfix">
+    <div class="m1 right">
+      <button class='usa-button new-form-button new-api-form-control' onclick='showNewForm();'>Add new API</button>
+      <button class='usa-button-secondary new-form-button new-api-form-control' style='display: none;' onclick='showNewForm();'>Cancel</button>
+    </div>
+  </div>
   {% assign form_id='new-api' %}
   {% assign api_data=site.data.blank_api %}
-  {% include api_edit_form.html form_id=form_id %}
+  <div class="new-api-form-control" style='display:none;'>
+    {% include api_edit_form.html form_id=form_id %}
+  </div>
 </div>
