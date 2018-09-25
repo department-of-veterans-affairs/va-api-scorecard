@@ -1,7 +1,7 @@
 {% comment %}{% assign form_id = 'new-api-data' %}{% endcomment %}
 {% assign class_name = 'data-element-' | append: form_id %}
 
-<form class="usa-form-large" id='{{form_id}}'>
+<form class="usa-form-large edit-api-form" id='{{form_id}}'>
   <fieldset>
     {% if form_id == 'new-api' %}
       <legend>New API</legend>
@@ -68,7 +68,7 @@
       {% endif %}
     {% endfor %}
   </fieldset>
-  <input type="button" value="Save" onclick="saveNewAPIData('{{form_id}}');">
+  <input class='save-button' type="button" value="Save" onclick="saveNewAPIData('{{form_id}}');">
   {% if form_id != 'new-api' %}
     <input class='usa-button-secondary' type="button" value="Delete" onclick="deleteAPIData('{{api_data.name}}');">
   {% endif %}
