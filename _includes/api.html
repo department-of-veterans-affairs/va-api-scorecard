@@ -52,28 +52,46 @@
         {{step_count}}/{{step_total}} Delivery success criteria satisfied
       </button>
       <div id='api-{{ c }}' class='usa-accordion-content'>
-        <ul class='unstyled-list' >
-          {% for step in api_data.success_criteria %}
-            {% if step.stage == api_data.stage %}
-              <li>
-                {% if step.completed == 'true' %}
-                  <input type="checkbox" checked name="">
-                {% else %}
-                  <input type="checkbox" name="">
-                {% endif %}
-                <label>{{step.criteria}}</label>
-              </li>
-            {% endif %}
-          {% endfor %}
-        </ul>
+        <table class='sc-table'>
+            <thead>
+              <tr>
+                <th scope='col'>
+                  Completed
+                </th>
+                <th scope='col'>
+                  Step
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for step in api_data.success_criteria %}
+                <tr>
+                  {% if step.stage == api_data.stage %}
+                    {% if step.completed == 'true' %}
+                      <td>
+                        <img src="{{"/assets/img/checked-box.png" | relative_url}}" class='checkbox-img' alt='step completed'>
+                      </td>
+                      {% else %}
+                        <td>
+                          <img src="{{"/assets/img/unchecked-box.png" | relative_url}}" class='checkbox-img' alt='step not completed'>
+                        </td>
+                      {% endif %}
+                      <td>
+                        {{step.criteria}}
+                      </td>
+                  {% endif %}
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
         <div>
           {{ api_data.metrics | markdownify }}
         </div>
       </div>
+      <div class='mt2'>
+        <a href="#main-content">Return to scorecard</a>
+      </div>
+      <hr>
     </div>
-    <div class='mt2'>
-      <a href="#main-content">Return to scorecard</a>
-    </div>
-    <hr>
   </div>
 </div>

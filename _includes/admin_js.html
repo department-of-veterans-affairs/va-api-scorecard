@@ -166,8 +166,6 @@ $(function() {
   let $saveButton = $('.save-button')
   $saveButton.attr('disabled', 'disabled');
   $(".edit-api-form :input").change(function() {
-      console.log('formchanged')
-      console.log($(this).html())
       $(this).closest('form').find($saveButton).removeAttr( "disabled");
   });
 });

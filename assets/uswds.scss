@@ -213,3 +213,27 @@ select{
     color: $color-primary !important;
   }
 }
+
+.checkbox-img{
+  width: 3rem;
+}
+
+.sc-table{
+  td{
+    border-left: none;
+    border-right: none;
+    border-color: $color-gray-light;
+  }
+  thead{
+    position: absolute;
+    left: -999em;
+  }
+  tbody{
+    tr:first-child{
+      td{
+        border-top: none;
+      }
+    }
+  }
+
+}
