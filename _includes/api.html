@@ -65,8 +65,8 @@
             </thead>
             <tbody>
               {% for step in api_data.success_criteria %}
-                <tr>
-                  {% if step.stage == api_data.stage %}
+                {% if step.stage == api_data.stage %}
+                  <tr>
                     {% if step.completed == 'true' %}
                       <td>
                         <img src="{{"/assets/img/checked-box.png" | relative_url}}" class='checkbox-img' alt='step completed'>
@@ -79,8 +79,8 @@
                       <td>
                         {{step.criteria}}
                       </td>
-                  {% endif %}
-                </tr>
+                  </tr>
+                {% endif %}
               {% endfor %}
             </tbody>
           </table>
