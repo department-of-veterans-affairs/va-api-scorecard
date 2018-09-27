@@ -79,6 +79,11 @@
 .legend-table {
   width: 45%;
   float: right;
+  tr{
+    td{
+      vertical-align: top;
+    }
+  }
   th{
     background: none;
     border-bottom: none;

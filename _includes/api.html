@@ -1,7 +1,7 @@
 {% assign status_obj = site.data.statuses | where:'name', api_data.status | first %}
 {% assign api_div_id = api_data.name | replace: ' ', '' | downcase | prepend: 'api-' %}
 <div id="apis">
-  <div id='{{api_div_id}}' data-api-name='{{api_div_id}}' data-api-status='{{api_data.status}}' class='api-div'>
+  <div id='{{api_div_id}}' data-api-name='{{api_div_id}}' data-api-status='{{api_data.status}}' class='api-div pb2'>
     <h3>
       <img src="{{status_obj.image | relative_url}}" alt="{{status_obj.alt}}" title="{{status_obj.alt}}" width='25px' align='top'>
       {{api_data.name}}
