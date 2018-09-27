@@ -113,6 +113,8 @@ function saveNewAPIData(form_id) {
                 });
                 isNew = false;
                 alert("saved " + $writepath + '. Note: site may take up to 5 minutes to show changes.');
+                window.scrollTo(0, 0);
+                location.reload();
             }
         });
         if(isNew) {
@@ -166,6 +168,9 @@ $(function() {
   let $saveButton = $('.save-button')
   $saveButton.attr('disabled', 'disabled');
   $(".edit-api-form :input").change(function() {
+      $(this).closest('form').find($saveButton).removeAttr( "disabled");
+  });
+  $(".edit-api-form :input").keyup(function() {
       $(this).closest('form').find($saveButton).removeAttr( "disabled");
   });
 });
