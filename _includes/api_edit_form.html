@@ -20,10 +20,15 @@
         <select id="{{form_id}}-{{id}}" name="{{id}}" class='{{class_name}}'>
           <option value>- Select -</option>
           {% for option in site.data[field.choices] %}
-            {% if option.name == api_data[id] %}
-              <option selected value="{{option.name}}">{{option.name}}</option>
+            {% if option.alt %}
+              {% assign label = option.alt %}
             {% else %}
-              <option value="{{option.name}}">{{option.name}}</option>
+              {% assign label = option.name %}
+            {% endif %}
+            {% if option.name == api_data[id] %}
+              <option selected value="{{option.name}}">{{label}}</option>
+            {% else %}
+              <option value="{{option.name}}">{{label}}</option>
             {% endif %}
           {% endfor %}
         </select>
