@@ -18,9 +18,16 @@
       <img src="{{"/assets/img/close.svg" | relative_url}}" alt="close">
       </button>
       <ul class="usa-nav-primary usa-accordion">
-        <li><a class="usa-nav-link usa-nav-primary" href="{{ "/edit" | relative_url }}">
-          <span>Edit APIs</span>
-          </a>
+        <li>
+          {% if page.type == 'edit' %}
+            <a class="usa-nav-link usa-nav-primary" href="{{ "/" | relative_url }}">
+              <span>Return to API Scorecard</span>
+            </a>
+          {% else %}
+            <a class="usa-nav-link usa-nav-primary" href="{{ "/edit" | relative_url }}">
+              <span>Edit APIs</span>
+            </a>
+          {% endif %}
         </li>
       </ul>
     </nav>
