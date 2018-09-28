@@ -4,7 +4,7 @@ description: >-
   augue. Duis ipsum ex, scelerisque quis semper nec, sollicitudin et tortor.
   Donec ac lobortis mauris, a malesuada metus. In hac habitasse platea dictumst.
   Mauris ac sodales nibh.aaaaa Sed a gravida leo, et placerat metus. asdfa Lorem
-status: Green
+status: Red
 blocked: I am blocked because of something.
 homepage: www.google.com
 github: www.github.com
@@ -37,13 +37,13 @@ success_criteria:
     stage: Define
     index: '0'
     criteria: Product vision is defined and aligns to a strategic imperative
-  - completed: 'true'
+  - completed: 'false'
     stage: Define
     index: '1'
     criteria: >-
       Identified and documented who the primary users are and what their needs
       are through primary research
-  - completed: 'true'
+  - completed: 'false'
     stage: Define
     index: '2'
     criteria: >-
