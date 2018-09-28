@@ -1,12 +1,4 @@
 <script type="text/javascript">
-// This isn't meant to be well-written JavaScript.
-// It is meant to be a hackable, trainable moment.
-// I've tried to document best that I can.
-// Lot's of cleanup needed
-
-// Reset the cookie manually
-//Cookies.expire('token')
-
 var $yaml_store = "";
 
 // When you fork, make sure ad add your org / user and repo name to _config.yml
@@ -20,10 +12,6 @@ function loadpage() {
 
         // Setting a cookie value
         Cookies.set('token', $oAuthToken);
-
-        // Set with expiration
-        // Cookies.set('token', $oAuthToken, { expires: '01/01/2017' });
-
     }
     showForm();
 }
@@ -51,7 +39,6 @@ function showForm(){
         var github = new Github({ token: $oAuthToken, auth: "oauth" });
         var repo = github.getRepo($org, $repo);
 
-        // Le'ts try to just get the Github Repo tree
         repo.getTree('gh-pages?recursive=true', function(err, tree) {
 
             if (err == null && $oAuthToken != null) {
@@ -140,13 +127,6 @@ function deleteAPIData(api){
   var repo = github.getRepo($org, $repo);
   $writepath = '_data/apis/' + api + '.yaml'
   
-  // repo.delete('gh-pages', $writepath, function(err, s){
-  //   console.log(err);
-  //   if(!err){
-  //     alert($writepath + ' deleted.');
-  //   }
-  // })
-
   repo.getTree('gh-pages?recursive=true', function(err, tree) {
     $.each(tree, function(treeKey, treeValue) {
         $path = treeValue['path'];
