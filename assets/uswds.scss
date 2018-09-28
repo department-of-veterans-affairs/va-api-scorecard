@@ -151,7 +151,6 @@ select{
   float: left;
   border-width: 1px;
   border-color: black;
-  border-left-color: red;
   border-left-width: 10px;
   .warning-symbol{
     vertical-align: middle;
@@ -165,6 +164,22 @@ select{
       vertical-align: middle;
     }
   }
+}
+
+.alert-Green{
+  border-left-color: #008001;
+}
+
+.alert-Red{
+  border-left-color: #FF0000;
+}
+
+.alert-Yellow{
+  border-left-color: #FDFF00;
+}
+
+.alert-Grey{
+  border-left-color: #808080;
 }
 
 .sort-box{

@@ -31,15 +31,21 @@
       {{ api_data.stage }} Stage
     </h4>
     {% if api_data.blocked != '' %}
-      <div class='blocked-alert'>
-        <div style='float: left;' class='warning-symbol'>
-          <img src="{{'assets/img/alerts/warning.svg' | relative_url}}" alt="blocked" title="{{status.alt}}" width='25px' align='top'>
-        </div>
-        <div style='float: left'>
-          <strong>Blocked</strong>
-          <br>
-          {{api_data.blocked}}
-        </div>
+      <div class='blocked-alert alert-{{status_obj.name}}'>
+        {% if status_obj.name == 'Red' %}
+          <div style='float: left;' class='warning-symbol'>
+            <img src="{{'assets/img/alerts/warning.svg' | relative_url}}" alt="blocked" title="{{status.alt}}" width='25px' align='top'>
+          </div>
+          <div style='float: left'>
+            <strong>Blocked</strong>
+            <br>
+            {{api_data.blocked}}
+          </div>
+        {% else %}
+          <div style='float: left'>
+            {{api_data.blocked}}
+          </div>
+        {% endif %}
       </div>
     {% endif %}
     <div class='usa-accordion-bordered'>

@@ -13,7 +13,7 @@
   required: true
 - field_name: 'blocked'
   type: 'text'
-  label: 'Blocked reason'
+  label: 'Status description'
   required: true
 - field_name: 'homepage'
   type: 'text'
