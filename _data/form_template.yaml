@@ -30,7 +30,7 @@
   required: true
 - field_name: 'metrics'
   type: 'textarea'
-  label: 'Metric'
+  label: 'Metrics'
   required: false
 - field_name: 'success_criteria'
   type: 'success-criteria'

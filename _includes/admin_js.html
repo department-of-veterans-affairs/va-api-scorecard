@@ -131,6 +131,9 @@ function saveNewAPIData(form_id) {
 }
 
 function deleteAPIData(api){
+  if (!confirm("Are you sure you want to delete this API from the scorecard?")) {
+    return;
+  }
   $oAuthToken = Cookies.get('token');
 
   var github = new Github({ token: $oAuthToken, auth: "oauth" });

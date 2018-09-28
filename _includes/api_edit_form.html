@@ -35,7 +35,7 @@
       {% elsif field.type == 'success-criteria' %}
         {% assign sc_class_name = class_name | append: '-sc' %}
         <fieldset class='{{sc_class_name}}'>
-          <legend>
+          <legend class='pb1 pt2'>
             Success Criteria
           </legend>
             {% for stage in site.data.stages %}
@@ -61,7 +61,7 @@
                         {% assign checked = '' %}
                       {% endif %}
                       <input data-stage="{{stage.name}}" data-step="{{step.index}}" id='{{step_id}}' class='{{sc_class_name}}' type="checkbox" name="{{sc_class_name}}" value="Bike" {{checked}}>
-                      <label for='{{step_id}}'>{{step.text}}</label>
+                      <label for='{{step_id}}' class='checkbox-label'>{{step.text}}</label>
                     {% endfor %}
                   </fieldset>
                 </div>
@@ -75,6 +75,6 @@
   </fieldset>
   <input class='save-button' type="button" value="Save" onclick="saveNewAPIData('{{form_id}}');">
   {% if form_id != 'new-api' %}
-    <input class='usa-button-secondary' type="button" value="Delete" onclick="deleteAPIData('{{api_data.name}}');">
+    <input class='usa-button-red' type="button" value="Delete" onclick="deleteAPIData('{{api_data.name}}');">
   {% endif %}
 </form>
