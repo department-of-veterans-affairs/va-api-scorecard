@@ -37,13 +37,13 @@ success_criteria:
     stage: Define
     index: '0'
     criteria: Product vision is defined and aligns to a strategic imperative
-  - completed: 'false'
+  - completed: 'true'
     stage: Define
     index: '1'
     criteria: >-
       Identified and documented who the primary users are and what their needs
       are through primary research
-  - completed: 'false'
+  - completed: 'true'
     stage: Define
     index: '2'
     criteria: >-
