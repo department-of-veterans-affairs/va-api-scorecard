@@ -36,11 +36,8 @@ title: Edit APIs - VA API Scorecard
       <button class='usa-button-secondary' onclick='logout();'>Log out</button>
     </div>
   </div>
-  {% for api_hash in site.data.apis %}
-    {% assign api_data = api_hash[1] %}
-    {% include edit_api.html api_data=api_hash %}
-  {% endfor %}
-
+  <div class="existing-apis">
+  </div>
 
   <div class="clearfix">
     <div class="m1 right">

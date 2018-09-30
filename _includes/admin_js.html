@@ -4,6 +4,22 @@ var $yaml_store = "";
 // When you fork, make sure ad add your org / user and repo name to _config.yml
 var $org = '{{ site.github_user }}';
 var $repo = '{{ site.github_repo }}';
+var $form_template = ''
+var $select_options = {
+  'stages': '',
+  'statuses': ''
+}
+
+function addListeners(){
+  let $saveButton = $('.save-button')
+  $saveButton.attr('disabled', 'disabled');
+  $(".edit-api-form :input").change(function() {
+      $(this).closest('form').find($saveButton).removeAttr( "disabled");
+  });
+  $(".edit-api-form :input").keyup(function() {
+      $(this).closest('form').find($saveButton).removeAttr( "disabled");
+  });
+}
 
 function loadpage() {
     var $oAuthToken = document.getElementById('auth-token').value;
@@ -14,6 +30,190 @@ function loadpage() {
         Cookies.set('token', $oAuthToken);
     }
     showForm();
+}
+
+function loadForms(repo){
+  loadFormTemplate(repo);
+}
+
+function loadFormTemplate(repo){
+  repo.read('gh-pages', '_data/form_template.yaml', function(err, data) {
+    $form_template = jsyaml.load(data);
+    
+    repo.read('gh-pages', '_data/stages.yaml', function(err, data){
+      $select_options['stages'] = jsyaml.load(data);
+      
+      repo.read('gh-pages', '_data/statuses.yml', function(err, data){
+        $select_options['statuses'] = jsyaml.load(data);  
+        loadAPIData(repo);
+      });
+    });
+  });
+}
+
+function loadAPIData(repo){
+  repo.read('gh-pages', '_data/apis/', function(err, data){
+    $.each(JSON.parse(data), function(i, v){
+      repo.read('gh-pages', v.path, function(err,data){
+        createApiForm(data, i);
+      })
+    });
+  });
+}
+
+function createApiForm(data, i){
+  var form_data = jsyaml.load(data);
+  var form_id = 'api-' + i;
+  var $form = $('.existing-apis')
+  $form.append(
+    formContainer(form_data, form_id)
+  );
+  addListeners();
+}
+
+function formContainer(data, form_id){
+  let $accordian_container = $("<div class='usa-accordion-bordered'></div>")
+
+  $accordian_container.append(
+    $(`<button class='usa-accordion-button' aria-expanded='false' aria-controls='${form_id}'>${data.name}</button>`)
+  );
+  let $form_div = $(`<div id='${form_id}' class='usa-accordion-content'></div>`)
+  $form_div.append(createForm(data, form_id));
+  $accordian_container.append(
+    $form_div
+  )
+  return $accordian_container;
+}
+
+function createForm(data, form_id){
+  let class_name = 'data-element-' + form_id;
+  let $form = $(`<form class="usa-form-large edit-api-form" id='${form_id}'></form>`);
+  let $mainFieldset = $('<fieldset></fieldset>');
+  $form.append($mainFieldset);
+  if(form_id == 'new-api')
+  {
+    $mainFieldset.append($('<legend>New API</legend>'));
+  }else{
+    $mainFieldset.append($(`<legend>${data.name}</legend>`));
+  }
+
+  $.each($form_template, function(i, v){
+    let field_id = form_id + '-' + v.field_name
+    if(v.type != 'success-criteria'){
+      $form.append(
+        $(`<label for="${field_id}">${v.label}<span class="usa-input-label-helper"></span></label>`)
+      );
+    }
+
+    switch(v.type){
+      case 'textarea':
+        $form.append(
+          $(`<textarea id="${field_id}" class='${class_name}' name="${v.field_name}">${data[v.field_name]}</textarea>`)
+        );
+        break;
+      case 'select':
+        let $select = $('<select>', {
+          id: field_id,
+          name: v.field_name,
+          class: class_name
+        });
+        $select.append($('<option value>- Select -</option>'));
+        $.each($select_options[v.choices], function(oi, ov){
+          let label = ov.alt ? ov.alt : ov.name
+          if(ov.name == data[v.field_name]){
+            $select.append(
+              $(`<option selected value=${ov.name}>${label}</option>`)
+            );
+          }else{
+            $select.append(
+              $(`<option value=${ov.name}>${label}</option>`)
+            );
+          }
+        });
+        $form.append($select);
+        break;
+      case 'success-criteria':
+        $form.append(successCriteria(class_name, data));
+        break;
+      default:
+        $form.append($(`
+          <input id="${field_id}" name="${v.field_name}" type="${v.type}" class='${class_name}' value="${data[v.field_name]}">
+        `));
+    };
+      
+  });
+  $form.append(
+    $(`
+      <input class='save-button' type="button" value="Save" onclick="saveNewAPIData('${form_id}');">
+    `)
+  );
+  if(form_id != 'new-api'){
+    $form.append(
+      $(`
+        <input class='usa-button-red' type="button" value="Delete" onclick="deleteAPIData('${data.name}');">
+      `)
+    )
+  }
+
+  return $form
+}
+
+function successCriteria(class_name, data){
+  let sc_class_name = class_name + '-sc';
+  let $sc = $(`<fieldset class='${sc_class_name}'>`);
+
+  $sc.append(
+    $(
+      `<legend class='pb1 pt2'>
+        Success Criteria
+       </legend>`
+    )
+  );
+
+  $.each($select_options['stages'], function(i, stage){
+    let sc_accordian_id = sc_class_name + stage.name;
+    let $stage_accordian = $(`<div class='usa-accordion-bordered'>`);
+    $stage_accordian.append(
+      $(`
+          <button class="usa-accordion-button"
+                  aria-expanded="false"
+                  aria-controls="${sc_accordian_id}">
+                  ${stage.name}
+          </button>
+        `)
+    );
+
+    let $accordian_content = $(`<div id='${sc_accordian_id}' class='usa-accordion-content'></div>`);
+    $stage_accordian.append($accordian_content);
+
+
+    let $accordian_content_fieldset = $('<fieldset></fieldset>')
+    $accordian_content.append($accordian_content_fieldset);
+
+    $accordian_content_fieldset.append(
+      $(`<legend>${stage.name}</legend>`)
+    )
+
+    for(var i = 0; i<stage.steps.length; i++){
+      let step = stage.steps[i];
+      let step_id = sc_class_name + stage.name + step.index
+      var matches = data['success_criteria'].filter(sc => sc['stage'] == stage.name && sc['completed'] == 'true' && sc['index'] == i);
+      var checked = matches.length > 0 ? 'checked' : '';
+      
+
+      $accordian_content_fieldset.append(
+        $(`
+            <input data-stage="${stage.name}" data-step="${step.index}" id='${step_id}' class='${sc_class_name}' type="checkbox" name="${sc_class_name}" ${checked}>
+            <label for='${step_id}' class='checkbox-label'>
+              ${step.text}
+            </label>
+        `)
+      )
+    }
+
+    $sc.append($stage_accordian);
+  });
+  return $sc;
 }
 
 function logout(){
@@ -43,6 +243,7 @@ function showForm(){
 
             if (err == null && $oAuthToken != null) {
                 $('#api-edit-form').show();
+                loadForms(repo);
                 $('.login-form').hide();
 
             } else {
@@ -69,7 +270,7 @@ function saveNewAPIData(form_id) {
     //Get success criteria
     $yaml_store['success_criteria'] = [];
     $('.data-element-' + form_id + '-sc input').each(function(i, elem) {
-      console.log($(elem).checked);
+
       $yaml_store['success_criteria'].push({
         completed: $(elem).prop('checked') ? 'true' : 'false',
         stage: $(elem).attr('data-stage'),
@@ -78,10 +279,8 @@ function saveNewAPIData(form_id) {
       });
     })
 
-    console.log($yaml_store);
-
     $yaml_dump = jsyaml.safeDump($yaml_store);
-    console.log('yamldump = ', $yaml_dump);
+    
     // // Grab the token from cookie
     $oAuthToken = Cookies.get('token');
 
@@ -145,16 +344,4 @@ function deleteAPIData(api){
     });
   });
 }
-
-
-$(function() {
-  let $saveButton = $('.save-button')
-  $saveButton.attr('disabled', 'disabled');
-  $(".edit-api-form :input").change(function() {
-      $(this).closest('form').find($saveButton).removeAttr( "disabled");
-  });
-  $(".edit-api-form :input").keyup(function() {
-      $(this).closest('form').find($saveButton).removeAttr( "disabled");
-  });
-});
 </script>
