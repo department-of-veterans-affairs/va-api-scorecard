@@ -14,6 +14,7 @@ A site for tracking the status of VA's API development.
 
 ## Running locally
 
-1. Run `bundle install`
-  - Install `bundler` if you don't have it already
-2. Start server `jekyll serve`
+1. Install `bundler`
+  - `gem install bundler`
+2. Run `bundle install`
+3. Start server `jekyll serve`
