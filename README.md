@@ -1,6 +1,6 @@
-# va-api-scorecard
+# VA API Scorecard
 
-A site for tracking the status of VA's API development.
+A dashboard for tracking the status and phases of development for APIs at the VA.
 
 ## Setup
 
