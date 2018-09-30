@@ -53,12 +53,21 @@ function loadFormTemplate(repo){
 
 function loadAPIData(repo){
   repo.read('gh-pages', '_data/apis/', function(err, data){
-    $.each(JSON.parse(data), function(i, v){
-      repo.read('gh-pages', v.path, function(err,data){
-        createApiForm(data, i);
-      })
-    });
+
+    var data = JSON.parse(data);
+    loadNextApiForm(0, data, repo)
   });
+}
+
+function loadNextApiForm(index, apis, repo){
+  if(index >= apis.length){
+    return;
+  }
+  let api = apis[index];
+  repo.read('gh-pages', api.path, function(err,data){
+    createApiForm(data, index);
+    loadNextApiForm(index+1, apis, repo)
+  })
 }
 
 function createApiForm(data, i){
