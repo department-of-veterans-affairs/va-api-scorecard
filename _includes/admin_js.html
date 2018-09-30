@@ -87,7 +87,7 @@ function createApiForm(data, i){
 function creatNewApiForm(data){
   var form_data = jsyaml.load(data);
   var form_id = 'new-api';
-  var $form = $('.new-api-form-control')
+  var $form = $('#new-api-form')
   $form.append(
     formContainer(form_data, form_id)
   );
@@ -95,12 +95,19 @@ function creatNewApiForm(data){
 }
 
 function formContainer(data, form_id){
-  let $accordian_container = $("<div class='usa-accordion-bordered'></div>")
+  if(form_id != 'new-api'){
+    var $accordian_container = $("<div class='usa-accordion-bordered'></div>")
 
-  $accordian_container.append(
-    $(`<button class='usa-accordion-button' aria-expanded='false' aria-controls='${form_id}'>${data.name}</button>`)
-  );
-  let $form_div = $(`<div id='${form_id}' class='usa-accordion-content'></div>`)
+    $accordian_container.append(
+      $(`<button class='usa-accordion-button' aria-expanded='false' aria-controls='${form_id}'>${data.name}</button>`)
+    );
+    var accordian_class = 'usa-accordion-content';
+  }else{
+    var $accordian_container = $("<div></div>");
+    var accordian_class = '';
+  }
+  
+  let $form_div = $(`<div id='${form_id}' class='${accordian_class}'></div>`)
   $form_div.append(createForm(data, form_id));
   $accordian_container.append(
     $form_div
