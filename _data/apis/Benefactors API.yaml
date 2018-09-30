@@ -6,8 +6,8 @@ description: >-
   Mauris ac sodales nibh.aaaaa Sed a gravida leo, et placerat metus. asdfa Lorem
 status: Red
 blocked: I am blocked because of something.
-homepage: www.google.coma
-github: www.github.coma
+homepage: www.google.com
+github: www.github.com
 stage: Iterate
 metrics: |-
   #### Funnel metrics
