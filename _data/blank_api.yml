@@ -5,7 +5,11 @@ blocked: ''
 homepage: ''
 github: ''
 stage: ''
-success_criteria: ''
+success_criteria:
+  - completed: ''
+    stage: ''
+    index: ''
+    criteria: ''
 metrics: |-
   #### Funnel metrics
   <table>

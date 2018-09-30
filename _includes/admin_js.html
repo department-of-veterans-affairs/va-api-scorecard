@@ -55,7 +55,11 @@ function loadAPIData(repo){
   repo.read('gh-pages', '_data/apis/', function(err, data){
 
     var data = JSON.parse(data);
-    loadNextApiForm(0, data, repo)
+    loadNextApiForm(0, data, repo);
+  });
+
+  repo.read('gh-pages', '_data/blank_api.yml', function(err, data){
+    creatNewApiForm(data);
   });
 }
 
@@ -74,6 +78,16 @@ function createApiForm(data, i){
   var form_data = jsyaml.load(data);
   var form_id = 'api-' + i;
   var $form = $('.existing-apis')
+  $form.append(
+    formContainer(form_data, form_id)
+  );
+  addListeners();
+}
+
+function creatNewApiForm(data){
+  var form_data = jsyaml.load(data);
+  var form_id = 'new-api';
+  var $form = $('.new-api-form-control')
   $form.append(
     formContainer(form_data, form_id)
   );
