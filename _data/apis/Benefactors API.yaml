@@ -89,7 +89,7 @@ success_criteria:
 
                     Translated API definition into a functioning, virtualized, URL-accessible API that uses synthetic, production-like data as part of the request and responses (test environment)
                   
-  - completed: 'false'
+  - completed: 'true'
     stage: Prototype
     index: '1'
     criteria: |-
