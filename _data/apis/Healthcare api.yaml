@@ -1,7 +1,7 @@
 name: Healthcare api
 description: Healthcare api description
 status: Green
-blocked: hi
+blocked: hia
 homepage: developer.va.gov/providerapi
 github: github.com/departmentofveteransaffairs/api/provider
 stage: Define
