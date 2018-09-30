@@ -11,7 +11,7 @@ A dashboard for tracking the status and phases of development for APIs at the VA
 3. Edit `_config.yml` file.
 4. Change `github_user` to the user name of the repo owner
 5. Change `gihub_repo` to the repo name
-6. *Note:* In order for Users to be able to use the dashboard, they must have read and write access to this repo.
+6. **Note:** In order for Users to be able to use the dashboard, they must have read and write access to this repo.
 
 ## Running locally
 
