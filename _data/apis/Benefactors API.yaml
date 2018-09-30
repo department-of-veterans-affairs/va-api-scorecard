@@ -82,7 +82,7 @@ success_criteria:
 
                     Defined entire lifespan of the API, including deprecation, even if generalized
                   
-  - completed: 'false'
+  - completed: 'true'
     stage: Prototype
     index: '0'
     criteria: |-
