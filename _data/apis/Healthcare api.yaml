@@ -2,8 +2,8 @@ name: Healthcare api
 description: Healthcare api description
 status: Green
 blocked: hia
-homepage: developer.va.gov/providerapi
-github: github.com/departmentofveteransaffairs/api/provider
+homepage: 'http://developer.va.gov/providerapi'
+github: 'http://github.com/departmentofveteransaffairs/api/provider'
 stage: Define
 metrics: |-
   #### Funnel metrics
