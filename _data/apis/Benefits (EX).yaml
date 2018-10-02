@@ -3,7 +3,7 @@ description: >-
   This project provides an API for managing, submitting, tracking, and receiving
   notifications on benefits claims. 
 status: Yellow
-blocked: ''
+blocked: Integrating new teams members slowing us down
 homepage: 'https://www.google.com/'
 github: 'https://github.com/'
 stage: Iterate
