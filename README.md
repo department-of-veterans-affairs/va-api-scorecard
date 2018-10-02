@@ -106,6 +106,7 @@ The edit form can be reordered and new fields can be added by editing the `form_
   - `gem install bundler`
 2. Run `bundle install`
 3. Start server `jekyll serve`
+4. Access the site by going to `http://localhost:4000/va-api-scorecard/` in your browser
 
 ## Some suggested improvements to the app
 
