@@ -37,7 +37,7 @@
         {% for i in (0..row_num) %}
           <tr style='border: none !important'>
             {% for stage in site.data.stages %}
-              <td style='border: none !important'>
+              <td style='border: none !important' class='status-table-td'>
                 {% for api_hash in site.data.apis %}
                 
                 {% assign api_data = api_hash[1] %}
