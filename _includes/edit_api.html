@@ -3,10 +3,10 @@
     {% assign form_id = c | prepend:'api-' %}
    <button class="usa-accordion-button"
       aria-expanded="false"
-      aria-controls="{{form_id}}">
+      aria-controls="{{form_id}}-accordian">
       {{api_data.name}}
     </button>
-    <div id='api-{{ c }}' class='usa-accordion-content'>
+    <div id='api-{{ c }}-accordian' class='usa-accordion-content'>
       {% include api_edit_form.html api_data=api_data form_id=api_index %}
     </div>
 </div>

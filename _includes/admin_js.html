@@ -99,7 +99,7 @@ function formContainer(data, form_id){
     var $accordian_container = $("<div class='usa-accordion-bordered'></div>")
 
     $accordian_container.append(
-      $(`<button class='usa-accordion-button' aria-expanded='false' aria-controls='${form_id}'>${data.name}</button>`)
+      $(`<button class='usa-accordion-button' aria-expanded='false' aria-controls='${form_id}-accordian'>${data.name}</button>`)
     );
     var accordian_class = 'usa-accordion-content';
   }else{
@@ -107,7 +107,7 @@ function formContainer(data, form_id){
     var accordian_class = '';
   }
   
-  let $form_div = $(`<div id='${form_id}' class='${accordian_class}'></div>`)
+  let $form_div = $(`<div id='${form_id}-accordian' class='${accordian_class}'></div>`)
   $form_div.append(createForm(data, form_id));
   $accordian_container.append(
     $form_div

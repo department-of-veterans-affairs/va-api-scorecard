@@ -20,17 +20,23 @@ title: Edit APIs - VA API Scorecard
 <p>Get started at <a href="https://github.com/settings/tokens" target="_blank">GitHub's Personal access tokens page</a>.</p>
   <table width="100%" border="0" cellpadding="3" id="token">
       <tr>
-        <td align="right"><a href="https://github.com/settings/tokens" target="_blank"><strong>Github Personal Auth Token:</strong></a></td>
-        <td align="left"><input type="password" name="auth-token" id="auth-token" value="" size="50" /></td>
-        <td align="right"><input type="button" name="loadpage" value="Load Data From YAML" onclick="loadpage();" /></td>
+        <td><label for='auth-token' style='margin-top:0;'><a href="https://github.com/settings/tokens" target="_blank"><strong>Github Personal Auth Token:</strong></a></label></td>
+        <td><input type="password" name="auth-token" id="auth-token" value="" size="50" /></td>
+        <td><input type="button" name="loadpage" value="Load Data From YAML" onclick="loadpage();" /></td>
       </tr>
   </table>
 </div>
 
 <div id="api-edit-form">
   <p>
-    You can use the following forms to edit the API's status and various other data points that appear on the main page. <strong>Note: changes may take up to five minutes to show on the main page as the site is automatically rebuilt when changes are made.</strong>
+    You can use the following forms to edit the API's status and various other data points that appear on the main page.
   </p>
+  <h3>Please note:</h3>
+  <ul>
+    <li>Changes may take up to five minutes to display on the dashboard as the site must rebuild after saving.</li>
+    <li>Adding and deleting sites from this page may cause the list of sites to temporarily change. Refresh the page to reload them.</li>
+    <li>Changing the name of an API will cause a new API to be saved. Delete the old version after changing the name of an API.</li>
+  </ul>
   <div class="clearfix">
     <div class="m1 right">
       <button class='usa-button-secondary' onclick='logout();'>Log out</button>

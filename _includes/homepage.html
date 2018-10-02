@@ -1,4 +1,4 @@
-<h3>Status and progress of the VA's portfolio of APIs</h3>
+<h2>Status and progress of the VA's portfolio of APIs</h2>
 
 {% include status_table.html %}
 {% if include.sort %}
@@ -23,11 +23,12 @@
     Sort by name | <a href="{{"/status" | relative_url}}"
           title="sort by name"> Sort by status</a>
   </div>
-
-  {% for api_hash in site.data.apis %}
-    {% assign api_data = api_hash[1] %}
-    {% include api.html api_data=api_hash %}
-  {% endfor %}
+  <div id="apis">
+    {% for api_hash in site.data.apis %}
+      {% assign api_data = api_hash[1] %}
+      {% include api.html api_data=api_hash %}
+    {% endfor %}
+  </div>
 {% endif %}
 
 {% include stages_definition.html %}
