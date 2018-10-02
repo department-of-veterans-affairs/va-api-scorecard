@@ -14,7 +14,7 @@ A dashboard for tracking the status and phases of development for APIs at the VA
 6. **Note:** In order for users to edit API statuses using the edit page, they must have read and write access to this repo.
 
 ## Configure phases
-Phases can be configured and will be reflected automatically after the site rebuilds on github pages. 
+Phases can be configured and will be reflected automatically after the site rebuilds on github pages.
 
 **Note: Changes to phases will not update phases of APIs. They will need to be updated seperately**
 
@@ -32,7 +32,7 @@ To change phase names and steps
  ```
 ## Configure statuses
 
-Statuses can be configured and will be reflected automatically after the site rebuilds on github pages. 
+Statuses can be configured and will be reflected automatically after the site rebuilds on github pages.
 1. Open `_data/statuses.yaml`
 2. Make changes and commit the file to the `gh-pages` branch.
 3. See file example below for description of fields.
@@ -106,3 +106,11 @@ The edit form can be reordered and new fields can be added by editing the `form_
   - `gem install bundler`
 2. Run `bundle install`
 3. Start server `jekyll serve`
+
+## Some suggested improvements to the app
+
+- Give it a proper datastore
+- Rewrite using a backend framework such as Rails, which would make it less brittle, more generalizable (e.g., quickly build-out new scorecards), testable, etc.
+- Integrate directly with GitHub repos to pull status
+- Add admin form field validations
+- Explore different ways of categorizing and visually communicating metrics
