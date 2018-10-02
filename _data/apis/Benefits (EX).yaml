@@ -1,37 +1,13 @@
-name: Benefactors API
+name: Benefits (EX)
 description: >-
-  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a viverra
-  augue. Duis ipsum ex, scelerisque quis semper nec, sollicitudin et tortor.
-  Donec ac lobortis mauris, a malesuada metus. In hac habitasse platea dictumst.
-  Mauris ac sodales nibh.aaaaa Sed a gravida leo, et placerat metus. asdfa Lorem
-status: Red
-blocked: I am blocked because of something.
-homepage: www.google.com
-github: www.github.com
+  This project provides an API for managing, submitting, tracking, and receiving
+  notifications on benefits claims. 
+status: Yellow
+blocked: ''
+homepage: 'https://www.google.com/'
+github: 'https://github.com/'
 stage: Iterate
-metrics: |-
-  #### Funnel metrics
-  <table>
-    <thead>
-      <tr>
-        <th>Metric</th>
-        <th>Current</th>
-        <th>Target</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>Total API Key Registrations</td>
-        <td>75</td>
-        <td>100</td>
-      </tr>
-      <tr>
-        <td>Total API Calls in Sandbox</td>
-        <td>1075</td>
-        <td>2000</td>
-      </tr>
-    </tbody>
-  </table>
+metrics: ''
 success_criteria:
   - completed: 'true'
     stage: Define
@@ -40,14 +16,14 @@ success_criteria:
 
                     Product vision is defined and aligns to a strategic imperative
                   
-  - completed: 'false'
+  - completed: 'true'
     stage: Define
     index: '1'
     criteria: |-
 
                     Identified and documented who the primary users are and what their needs are through primary research
                   
-  - completed: 'false'
+  - completed: 'true'
     stage: Define
     index: '2'
     criteria: |-
@@ -61,21 +37,21 @@ success_criteria:
 
                     Defined using OpenAPI Specification and JSON Schema
                   
-  - completed: 'false'
+  - completed: 'true'
     stage: Define
     index: '4'
     criteria: |-
 
                     Team behind the service is defined
                   
-  - completed: 'false'
+  - completed: 'true'
     stage: Define
     index: '5'
     criteria: |-
 
                     Established a base set of design practices and standards (e.g., versioning, media types, status codes)
                   
-  - completed: 'false'
+  - completed: 'true'
     stage: Define
     index: '6'
     criteria: |-
@@ -117,35 +93,35 @@ success_criteria:
 
                     Tested performance against expected load and potential stress conditions
                   
-  - completed: 'true'
+  - completed: 'false'
     stage: Iterate
     index: '2'
     criteria: |-
 
                     Conducted security tests and resolved vulnerabilities
                   
-  - completed: 'true'
+  - completed: 'false'
     stage: Iterate
     index: '3'
     criteria: |-
 
                     Documentation is provided within a portal
                   
-  - completed: 'true'
+  - completed: 'false'
     stage: Iterate
     index: '4'
     criteria: |-
 
                     Developed an outreach plan for driving and measuring adoption
                   
-  - completed: 'true'
+  - completed: 'false'
     stage: Iterate
     index: '5'
     criteria: |-
 
                     Identified measurable performance metrics and documented baseline (if one exists) for future comparison
                   
-  - completed: 'true'
+  - completed: 'false'
     stage: Iterate
     index: '6'
     criteria: |-

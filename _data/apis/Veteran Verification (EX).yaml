@@ -1,42 +1,22 @@
-name: Healthcare api
-description: Healthcare api description
-status: Green
-blocked: hia
-homepage: developer.va.gov/providerapi
-github: github.com/departmentofveteransaffairs/api/provider
+name: Veteran Verification (EX)
+description: >-
+  This project provides an API for building tools to help Veterans verify their
+  Veteran status electronically.
+status: Grey
+blocked: ''
+homepage: 'http://www.google.com'
+github: 'http://www.github.com'
 stage: Define
-metrics: |-
-  #### Funnel metrics
-  <table>
-    <thead>
-      <tr>
-        <th>Metric</th>
-        <th>Current</th>
-        <th>Target</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>Total API Key Registrations</td>
-        <td>0</td>
-        <td>0</td>
-      </tr>
-      <tr>
-        <td>Total API Calls in Sandbox</td>
-        <td>1075</td>
-        <td>2000</td>
-      </tr>
-    </tbody>
-  </table>
+metrics: ''
 success_criteria:
-  - completed: 'true'
+  - completed: 'false'
     stage: Define
     index: '0'
     criteria: |-
 
                     Product vision is defined and aligns to a strategic imperative
                   
-  - completed: 'true'
+  - completed: 'false'
     stage: Define
     index: '1'
     criteria: |-
@@ -57,7 +37,7 @@ success_criteria:
 
                     Defined using OpenAPI Specification and JSON Schema
                   
-  - completed: 'true'
+  - completed: 'false'
     stage: Define
     index: '4'
     criteria: |-
