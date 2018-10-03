@@ -1,12 +1,12 @@
 name: Benefits (EX)
 description: >-
-  This project provides an API for managing, submitting, tracking, and receiving
-  notifications on benefits claims. 
+  Example of a change. This project provides an API for managing, submitting,
+  tracking, and receiving notifications on benefits claims. 
 status: Yellow
 blocked: Integrating new team members slowing us down
 homepage: 'https://www.google.com/'
 github: 'https://github.com/'
-stage: Iterate
+stage: Launch
 metrics: ''
 success_criteria:
   - completed: 'true'
@@ -128,7 +128,7 @@ success_criteria:
 
                     Validated correct business and operational metrics are being collected, using automated tools wherever possible
                   
-  - completed: 'false'
+  - completed: 'true'
     stage: Launch
     index: '0'
     criteria: |-
